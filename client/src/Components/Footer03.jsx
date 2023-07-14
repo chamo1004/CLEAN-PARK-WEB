@@ -1,4 +1,4 @@
-import { Box, Divider, IconButton, Typography, styled } from "@mui/material";
+import { Box, IconButton, Typography, styled } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
@@ -24,9 +24,7 @@ function Footer03() {
         color: "white",
         flexDirection: isMobile ? "column" : "row", // Change the direction to column on mobile devices
       }}
-    >      
-          
-      <Divider sx={{ marginBottom: "1rem" }} />
+    >
       <Box
         sx={{
           display: "flex",

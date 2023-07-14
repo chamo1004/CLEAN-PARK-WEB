@@ -52,7 +52,7 @@ function Footer() {
           <Typography
             variant="h6"
             component="div"
-            sx={{ marginLeft: isMobile ? 0 : "8px" }} // Remove left margin on mobile devices
+            sx={{ marginLeft: isMobile ? 0 : "8px", marginTop: "12px" }} // Remove left margin on mobile devices
           >
             Clean Park Auto Service
           </Typography>

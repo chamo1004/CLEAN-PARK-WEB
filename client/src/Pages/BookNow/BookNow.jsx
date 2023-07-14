@@ -4,7 +4,7 @@ import NavBar from "../../Components/NavBar";
 import Footer03 from "../../Components/Footer03";
 import Appointment from "../BookNow/Appointments";
 
-export default function Home() {
+export default function BookNow() {
   return (
     <>
       <Box>

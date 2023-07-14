@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Box, Grid, IconButton, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import ServiceCard from "./ServiceCard";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import bodywash from "../../../img/bodywash~1.jpg";
 import checkup from "../../../img/checkup~1.jpg";
 import repair from "../../../img/repair~1.jpg";
@@ -70,7 +69,6 @@ const Services = ({ ourServicesRef, offersRef }) => {
           alignItems: "center",
           color: "white",
           paddingLeft: "3.5rem",
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.98), rgba(0, 0, 0, 0.94))`,
         }}
       >
         <Grid container spacing={0} p={0}>
@@ -81,7 +79,7 @@ const Services = ({ ourServicesRef, offersRef }) => {
             p={2}
             sx={{
               paddingRight: "4.5rem",
-              paddingBottom: "6rem",
+              paddingBottom: "12px",
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
@@ -126,13 +124,7 @@ const Services = ({ ourServicesRef, offersRef }) => {
               justifyContent: "center",
               alignItems: "center",
             }}
-          >
-            <IconButton onClick={handleOffersClick}>
-              <KeyboardArrowDownIcon
-                sx={{ fontSize: "4rem", padding: "0.5rem", color: "white" }}
-              />
-            </IconButton>
-          </Grid>
+          ></Grid>
         </Grid>
       </Box>
     </>

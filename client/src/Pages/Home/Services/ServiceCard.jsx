@@ -9,7 +9,7 @@ const ServiceCard = ({ title, description, backgroundImg }) => {
           backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8)), url(${backgroundImg})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          padding: 15,
+          padding: 12,
           borderRadius: 2,
           height: "80%",
           width: "90%",
@@ -19,15 +19,13 @@ const ServiceCard = ({ title, description, backgroundImg }) => {
           },
         }}
       >
-        <Typography variant="h4" component="h2" sx={{ marginBottom: 0 }}>
+        <Typography variant="h4" component="h2" sx={{ marginBottom: 1 }}>
           {title}
         </Typography>
         <Typography variant="body1" sx={{ marginBottom: 2 }}>
           {description}
         </Typography>
-        <ul>
-
-        </ul>
+        <ul></ul>
       </Box>
     </>
   );

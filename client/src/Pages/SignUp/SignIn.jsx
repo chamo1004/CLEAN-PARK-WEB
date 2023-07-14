@@ -4,7 +4,7 @@ import NavBar from "../../Components/NavBar";
 import Footer03 from "../../Components/Footer03";
 import SignupForm from "./SignupForm";
 
-export default function Home() {
+export default function SignIn() {
   return (
     <>
       <Box>
