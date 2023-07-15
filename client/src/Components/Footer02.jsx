@@ -27,7 +27,7 @@ function Footer() {
         backgroundColor: "#272727",
         padding: "2rem",
         color: "white",
-        flexDirection: isMobile ? "column" : "row", // Change the direction to column on mobile devices
+        flexDirection: isMobile ? "column" : "row", 
       }}
     >
       <Box
@@ -41,9 +41,9 @@ function Footer() {
         <Box
           sx={{
             display: "flex",
-            flexDirection: isMobile ? "column" : "row", // Change the direction to column on mobile devices
-            alignItems: isMobile ? "center" : "flex-start", // Center align on mobile devices
-            marginBottom: isMobile ? "1rem" : 0, // Add some bottom margin on mobile devices
+            flexDirection: isMobile ? "column" : "row", 
+            alignItems: isMobile ? "center" : "flex-start", 
+            marginBottom: isMobile ? "1rem" : 0, 
           }}
         >
           <Typography variant="h6" component="div">
@@ -52,7 +52,7 @@ function Footer() {
           <Typography
             variant="h6"
             component="div"
-            sx={{ marginLeft: isMobile ? 0 : "8px", marginTop: "12px" }} // Remove left margin on mobile devices
+            sx={{ marginLeft: isMobile ? 0 : "8px", marginTop: "12px" }} 
           >
             Clean Park Auto Service
           </Typography>

@@ -17,6 +17,12 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: true,
       },      
     });
+    Process.associate = (models) => {
+      Process.belongsTo(models.Appointment, {
+        foreignKey: 'appointmentid',
+        as: 'appointment',
+      });
+    };
   
     return Process;
   };

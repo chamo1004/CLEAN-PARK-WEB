@@ -67,13 +67,20 @@ const Appointments = () => {
     }
   };
 
+  const handleTextFieldFocus = (field) => {
+    setErrors((prevState) => ({
+      ...prevState,
+      [field]: false,
+    }));
+  };
+
   const vehicleNumberRef = useRef();
   const contactNumberRef = useRef();
   const dateRef = useRef();
   const timeRef = useRef();
 
   return (
-    <>
+    <> 
       <Grid
         item
         xs={12}
@@ -81,13 +88,11 @@ const Appointments = () => {
         md={5}
         component={Paper}
         elevation={6}
-        m={8}
-        p={2}
-        sx={{
-          backgroundColor: "transparent",
-          color: "white",
-        }}
+        ml={45}
+        mr={45}
+        p={4}
       >
+        
         <Box
           sx={{
             my: 4,
@@ -95,24 +100,20 @@ const Appointments = () => {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
+            m: 8,
           }}
         >
-          <Typography component="h1" variant="h4" sx={{ color: "white" }}>
+          <Typography component="h1" variant="h4">
             Make an appointment
           </Typography>
-          <Typography
-            component="h1"
-            variant="body1"
-            color="white"
-            sx={{ color: "white" }}
-          >
+          <Typography component="h1" variant="body1">
             Tell us how you like it!
           </Typography>
           <Box
             component="form"
             noValidate
             onSubmit={handleSubmit}
-            sx={{ mt: 1, color: "white" }}
+            sx={{ mt: 1 }}
           >
             <TextField
               margin="normal"
@@ -125,15 +126,13 @@ const Appointments = () => {
               autoFocus
               InputLabelProps={{
                 shrink: true, // Label always displayed in the border
-                style: { color: "white" },
               }}
               sx={{
-                "& .MuiInputBase-input": {
-                  color: "white",
-                },
+                "& .MuiInputBase-input": {},
                 "& .MuiOutlinedInput-root": {
-                  "& fieldset": {
-                    borderColor: "white",
+                  "& fieldset": {},
+                  "&.Mui-focused fieldset": {
+                    borderColor: "red",
                   },
                 },
               }}
@@ -156,18 +155,15 @@ const Appointments = () => {
               }
               InputLabelProps={{
                 shrink: true, // Label always displayed in the border
-                style: { color: "white" },
               }}
+              onFocus={() => handleTextFieldFocus("vehicleNumber")}
               sx={{
-                "& .MuiFormHelperText-root": {
-                  color: "red",
-                },
-                "& .MuiInputBase-input": {
-                  color: "white",
-                },
+                "& .MuiFormHelperText-root": {},
+                "& .MuiInputBase-input": {},
                 "& .MuiOutlinedInput-root": {
-                  "& fieldset": {
-                    borderColor: "white",
+                  "& fieldset": {},
+                  "&.Mui-focused fieldset": {
+                    borderColor: "red",
                   },
                 },
               }}
@@ -191,18 +187,15 @@ const Appointments = () => {
               }
               InputLabelProps={{
                 shrink: true, // Label always displayed in the border
-                style: { color: "white" },
               }}
+              onFocus={() => handleTextFieldFocus("contactNumber")}
               sx={{
-                "& .MuiFormHelperText-root": {
-                  color: "red",
-                },
-                "& .MuiInputBase-input": {
-                  color: "white",
-                },
+                "& .MuiFormHelperText-root": {},
+                "& .MuiInputBase-input": {},
                 "& .MuiOutlinedInput-root": {
-                  "& fieldset": {
-                    borderColor: "white",
+                  "& fieldset": {},
+                  "&.Mui-focused fieldset": {
+                    borderColor: "red",
                   },
                 },
               }}
@@ -217,15 +210,13 @@ const Appointments = () => {
               id="serviceType"
               InputLabelProps={{
                 shrink: true, // Label always displayed in the border
-                style: { color: "white" },
               }}
               sx={{
-                "& .MuiInputBase-input": {
-                  color: "white",
-                },
+                "& .MuiInputBase-input": {},
                 "& .MuiOutlinedInput-root": {
-                  "& fieldset": {
-                    borderColor: "white",
+                  "& fieldset": {},
+                  "&.Mui-focused fieldset": {
+                    borderColor: "red",
                   },
                 },
               }}
@@ -243,15 +234,14 @@ const Appointments = () => {
               helperText={errors.date && "Please select a date"}
               InputLabelProps={{
                 shrink: true, // Label always displayed in the border
-                style: { color: "white" },
               }}
+              onFocus={() => handleTextFieldFocus("date")}
               sx={{
-                "& .MuiInputBase-input": {
-                  color: "white",
-                },
+                "& .MuiInputBase-input": {},
                 "& .MuiOutlinedInput-root": {
-                  "& fieldset": {
-                    borderColor: "white",
+                  "& fieldset": {},
+                  "&.Mui-focused fieldset": {
+                    borderColor: "red",
                   },
                 },
               }}
@@ -269,15 +259,14 @@ const Appointments = () => {
               helperText={errors.time && "Please select a time"}
               InputLabelProps={{
                 shrink: true, // Label always displayed in the border
-                style: { color: "white" },
               }}
+              onFocus={() => handleTextFieldFocus("time")}
               sx={{
-                "& .MuiInputBase-input": {
-                  color: "white",
-                },
+                "& .MuiInputBase-input": {},
                 "& .MuiOutlinedInput-root": {
-                  "& fieldset": {
-                    borderColor: "white",
+                  "& fieldset": {},
+                  "&.Mui-focused fieldset": {
+                    borderColor: "red",
                   },
                 },
               }}

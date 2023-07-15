@@ -21,6 +21,12 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },     
     });
+    Appointment.associate = (models) => {
+      Appointment.belongsTo(models.Car, {
+        foreignKey: 'carid',
+        as: 'car',
+      });
+    };
   
     return Appointment;
   };
