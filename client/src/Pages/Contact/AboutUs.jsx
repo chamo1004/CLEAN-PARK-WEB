@@ -4,7 +4,6 @@ import HowToRegIcon from "@mui/icons-material/HowToReg";
 import ScheduleIcon from "@mui/icons-material/Schedule";
 import StarsIcon from "@mui/icons-material/Stars";
 import PeopleIcon from "@mui/icons-material/People";
-import banner03 from "../../img/banner03.jpg";
 
 const AboutUs = ({ aboutUsRef }) => {
   const SectionTitle = styled(Typography)(({ theme }) => ({
@@ -20,7 +19,7 @@ const AboutUs = ({ aboutUsRef }) => {
     <Box
       ref={aboutUsRef}
       sx={{
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(${banner03})`,
+        backgroundColor: "black",
         backgroundSize: "cover",
         backgroundPosition: "center",
         minHeight: "calc(100vh - 90px)",
@@ -295,11 +294,11 @@ const AboutUs = ({ aboutUsRef }) => {
                   justifyContent: "center",
                 }}
               >
-                Our success is the result of our dedicated team. We
-                foster a culture of collaboration, respect, and continuous
-                improvement among our staff. We work towards our
-                common goal of exceeding customer expectations and maintaining
-                our position as industry leaders.
+                Our success is the result of our dedicated team. We foster a
+                culture of collaboration, respect, and continuous improvement
+                among our staff. We work towards our common goal of exceeding
+                customer expectations and maintaining our position as industry
+                leaders.
               </Typography>
             </Box>
           </Box>

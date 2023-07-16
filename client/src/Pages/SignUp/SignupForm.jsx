@@ -164,31 +164,40 @@ const SignupForm = () => {
             p: 8,
           }}
         >
-          <Grid
+         <Grid
             item
             xs={12}
             sm={8}
             md={5}
-            component={Paper}
             elevation={6}
-            ml={30}
+            mr={40}
+            p={4}
+            ml={10}
             mr={30}
-            p={8}
           >
-         
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  textAlign: "center",
-                }}
-              >
-                <Typography variant="h4" sx={{ mb: 2 }}>
+            <Box
+              sx={{
+                width: "40em",
+                height: "60em",
+                padding: "4rem",
+                backgroundColor: "rgba(255, 255, 255, 0.15)",
+                border: "1px solid rgba(255, 255, 255, 0.222)",
+                backdropFilter: "blur(20px)",
+                borderRadius: ".7rem",
+                transition: "all ease .3s",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+                "&:hover": {
+                  boxShadow: "0px 0px 20px 1px #ffbb763f",
+                  border: "1px solid rgba(255, 255, 255, 0.454)",
+                },
+              }}
+            >
+                <Typography variant="h4" sx={{ mb: 2 }} textAlign="center">
                   Join our network
                 </Typography>
-                <Typography variant="body1" color="#C0C0C0" sx={{ mb: 2 }}>
+                <Typography variant="body1" color="#C0C0C0" sx={{ mb: 2 }} textAlign="center">
                   We'd love to have you!
                 </Typography>
                 <form onSubmit={handleSubmit}>

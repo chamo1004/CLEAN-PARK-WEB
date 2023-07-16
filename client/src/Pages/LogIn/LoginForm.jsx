@@ -1,13 +1,4 @@
-import {
-  Box,
-  Button,
-  Grid,
-  Paper,
-  Switch,
-  TextField,
-  Typography,
-} from "@mui/material";
-
+import { Box, Button, Grid, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -57,7 +48,8 @@ const LoginForm = () => {
           sx={{
             backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(${banner04})`,
             backgroundSize: "cover",
-            p: 8,
+            p: 10,
+            paddingBottomb: 6,
           }}
         >
           <Grid
@@ -65,27 +57,49 @@ const LoginForm = () => {
             xs={12}
             sm={8}
             md={5}
-            component={Paper}
             elevation={6}
-            ml={45}
-            mr={45}
+            mr={40}
             p={4}
+            ml={30}
+            mr={30}
           >
             <Box
               sx={{
-                my: 2,
-                mx: 4,
+                width: "40em",
+                height: "30em",
+                padding: "4rem",
+                backgroundColor: "rgba(255, 255, 255, 0.15)",
+                border: "1px solid rgba(255, 255, 255, 0.222)",
+                backdropFilter: "blur(20px)",
+                borderRadius: ".7rem",
+                transition: "all ease .3s",
                 display: "flex",
                 flexDirection: "column",
-                alignItems: "center",
+                justifyContent: "space-between",
+                "&:hover": {
+                  boxShadow: "0px 0px 20px 1px #ffbb763f",
+                  border: "1px solid rgba(255, 255, 255, 0.454)",
+                },
               }}
             >
-              <Typography component="h1" variant="h4">
-                Welcome back
-              </Typography>
-              <Typography component="h1" variant="body1" color="#C0C0C0">
-                Please enter your details.
-              </Typography>
+              <Box alignItems="center">
+                <Typography
+                  component="h1"
+                  variant="h4"
+                  alignItems="center"
+                  textAlign="center" // Center horizontally
+                >
+                  Welcome back!
+                </Typography>
+                <Typography
+                  component="h1"
+                  variant="body1"
+                  color="#C0C0C0"
+                  textAlign="center" // Center horizontally
+                >
+                  Please enter your details.
+                </Typography>
+              </Box>
               <Box
                 component="form"
                 noValidate
