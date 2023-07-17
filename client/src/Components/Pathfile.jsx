@@ -5,7 +5,8 @@ import Contact from "../Pages/Contact/Contact";
 import BookNow from "../Pages/BookNow/BookNow";
 import LogIn from "../Pages/LogIn/LogIn";
 import SignUp from "../Pages/SignUp/SignIn";
-import OTP from "../Pages/Verification/Verification";
+import Verification from "../Pages/Verification/Verification";
+import Profile01 from "../Pages/Profile/Profile01/Profile01";
 
 export default function () {
   return (
@@ -17,7 +18,8 @@ export default function () {
           <Route exact path="/booknow" element={<BookNow />}></Route>
           <Route exact path="/login" element={<LogIn />}></Route>
           <Route exact path="/signup" element={<SignUp />}></Route>
-          <Route exact path="/otp" element={<OTP />}></Route>
+          <Route exact path="/verification" element={<Verification />}></Route>
+          <Route exact path="/profile01" element={<Profile01 />}></Route>
         </Routes>
       </Router>
     </div>

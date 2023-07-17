@@ -1,4 +1,4 @@
-import { Box, Button, Grid, Paper, TextField, Typography } from "@mui/material";
+import { Box, Button, Grid, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
@@ -140,7 +140,7 @@ const SignupForm = () => {
   };
 
   const validateEmail = (email) => {
-    const emailRegex = /^[\w-.]+@[\w-]+\.[\w-.]+\.com$/;
+    const emailRegex = /^[\w-.]+@[\w-]+\.[\w-.]+$/;
     return emailRegex.test(email);
   };
 
@@ -164,22 +164,13 @@ const SignupForm = () => {
             p: 8,
           }}
         >
-         <Grid
-            item
-            xs={12}
-            sm={8}
-            md={5}
-            elevation={6}
-            mr={40}
-            p={4}
-            ml={10}
-            mr={30}
-          >
+          <Grid item xs={12} sm={8} elevation={6} mr={30} p={4} ml={30}>
             <Box
               sx={{
-                width: "40em",
-                height: "60em",
+                width: "45em",
+                height: "63em",
                 padding: "4rem",
+                paddingBottom: "12rem",
                 backgroundColor: "rgba(255, 255, 255, 0.15)",
                 border: "1px solid rgba(255, 255, 255, 0.222)",
                 backdropFilter: "blur(20px)",
@@ -194,137 +185,143 @@ const SignupForm = () => {
                 },
               }}
             >
-                <Typography variant="h4" sx={{ mb: 2 }} textAlign="center">
-                  Join our network
-                </Typography>
-                <Typography variant="body1" color="#C0C0C0" sx={{ mb: 2 }} textAlign="center">
-                  We'd love to have you!
-                </Typography>
-                <form onSubmit={handleSubmit}>
-                  <TextField
-                    margin="normal"
-                    required
-                    fullWidth
-                    id="firstName"
-                    label="First name"
-                    name="firstName"
-                    autoComplete="firstName"
-                    error={errors.firstName ? true : false}
-                    helperText={errors.firstName}
-                  />
-                  <TextField
-                    margin="normal"
-                    required
-                    fullWidth
-                    id="lastName"
-                    label="Last name"
-                    name="lastName"
-                    autoComplete="lastName"
-                    error={errors.lastName ? true : false}
-                    helperText={errors.lastName}
-                  />
-                  <TextField
-                    margin="normal"
-                    required
-                    fullWidth
-                    id="address"
-                    label="Address"
-                    name="address"
-                    autoComplete="address"
-                    error={errors.address ? true : false}
-                    helperText={errors.address}
-                  />
-                  <TextField
-                    margin="normal"
-                    required
-                    fullWidth
-                    id="email"
-                    label="Email address"
-                    name="email"
-                    autoComplete="email"
-                    error={errors.email ? true : false}
-                    helperText={errors.email}
-                  />
-                  <TextField
-                    margin="normal"
-                    required
-                    fullWidth
-                    id="phonenumber"
-                    label="Phone number"
-                    type="text"
-                    name="phonenumber"
-                    autoComplete="phonenumber"
-                    error={errors.phonenumber ? true : false}
-                    helperText={errors.phonenumber}
-                  />
-                  <TextField
-                    margin="normal"
-                    required
-                    fullWidth
-                    id="backuptel"
-                    label="Secondary phone number"
-                    type="text"
-                    name="backuptel"
-                    autoComplete="backuptel"
-                    error={errors.backuptel ? true : false}
-                    helperText={errors.backuptel}
-                  />
-                  <TextField
-                    margin="normal"
-                    required
-                    fullWidth
-                    name="password"
-                    label="Password"
-                    type="password"
-                    id="password"
-                    autoComplete="current-password"
-                    error={errors["password"] ? true : false}
-                    helperText={errors["password"]}
-                  />
-                  <TextField
-                    margin="normal"
-                    required
-                    fullWidth
-                    name="confirm password"
-                    label="Confirm password"
-                    type="password"
-                    id="confirmPassword"
-                    autoComplete="confirm-password"
-                    error={errors["confirm password"] ? true : false}
-                    helperText={errors["confirm password"]}
-                  />
-                  <Button
-                    type="submit"
-                    fullWidth
-                    variant="contained"
-                    sx={{ mt: 2, mb: 3 }}
-                  >
-                    Sign up
-                  </Button>
-                  <Grid container justifyContent="center" alignItems="center">
-                    <Grid item>
+              <Typography variant="h4" sx={{ mb: 2 }} textAlign="center">
+                Join our network
+              </Typography>
+              <Typography
+                variant="body1"
+                color="#C0C0C0"
+                sx={{ mb: 2 }}
+                textAlign="center"
+              >
+                We'd love to have you!
+              </Typography>
+              <form onSubmit={handleSubmit}>
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="firstName"
+                  label="First name"
+                  name="firstName"
+                  autoComplete="firstName"
+                  error={errors.firstName ? true : false}
+                  helperText={errors.firstName}
+                />
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="lastName"
+                  label="Last name"
+                  name="lastName"
+                  autoComplete="lastName"
+                  error={errors.lastName ? true : false}
+                  helperText={errors.lastName}
+                />
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="address"
+                  label="Address"
+                  name="address"
+                  autoComplete="address"
+                  error={errors.address ? true : false}
+                  helperText={errors.address}
+                />
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="email"
+                  label="Email address"
+                  name="email"
+                  autoComplete="email"
+                  error={errors.email ? true : false}
+                  helperText={errors.email}
+                />
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="phonenumber"
+                  label="Phone number"
+                  type="text"
+                  name="phonenumber"
+                  autoComplete="phonenumber"
+                  error={errors.phonenumber ? true : false}
+                  helperText={errors.phonenumber}
+                />
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="backuptel"
+                  label="Secondary phone number"
+                  type="text"
+                  name="backuptel"
+                  autoComplete="backuptel"
+                  error={errors.backuptel ? true : false}
+                  helperText={errors.backuptel}
+                />
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  name="password"
+                  label="Password"
+                  type="password"
+                  id="password"
+                  autoComplete="current-password"
+                  error={errors["password"] ? true : false}
+                  helperText={errors["password"]}
+                />
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  name="confirm password"
+                  label="Confirm password"
+                  type="password"
+                  id="confirmPassword"
+                  autoComplete="confirm-password"
+                  error={errors["confirm password"] ? true : false}
+                  helperText={errors["confirm password"]}
+                />
+                <Button
+                  component={Link}
+                  to="/verification"
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  sx={{ mt: 2, mb: 3 }}
+                >
+                  Sign up
+                </Button>
+                <Grid container justifyContent="center" alignItems="center">
+                  <Grid item>
+                    <Typography
+                      variant="body1"
+                      color="#C0C0C0"
+                      fontWeight="regular"
+                    >
+                      Already have an account?{" "}
                       <Typography
+                        component={Link}
+                        to="/login"
                         variant="body1"
-                        color="#C0C0C0"
-                        fontWeight="regular"
+                        color="black"
+                        fontWeight="medium"
+                        sx={{ textDecoration: "none" }}
                       >
-                        Already have an account?{" "}
-                        <Typography
-                          component={Link}
-                          to="/login"
-                          variant="body1"
-                          color="black"
-                          fontWeight="medium"
-                          sx={{ textDecoration: "none" }}
-                        >
-                          Log In
-                        </Typography>
+                        Log In
                       </Typography>
-                    </Grid>
+                    </Typography>
                   </Grid>
-                </form>
-              </Box>
-            
+                </Grid>
+              </form>
+            </Box>
           </Grid>
         </Grid>
       </ThemeProvider>

@@ -3,6 +3,7 @@ import Link from "@mui/material/Link";
 import { Box, Divider, IconButton, Typography, styled } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import React from "react";
 
 import CallIcon from "@mui/icons-material/Call";
 import EmailIcon from "@mui/icons-material/Email";
@@ -12,18 +13,27 @@ import logoImage from "./images/logomain.png";
 
 const CustomLink = styled(Link)({
   textDecoration: "none",
-  padding: "2rem",
+  padding: "0.5rem",
 });
 
 const CustomIconButton = styled(IconButton)({
   marginRight: "2rem",
   color: "white",
-  
 });
 
 function Footer() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const [isCopied, setIsCopied] = React.useState(false);
+
+  const handlePhoneClick = () => {
+    const phoneNumber = "+94 71 362 3663";
+    navigator.clipboard.writeText(phoneNumber);
+    setIsCopied(true);
+    setTimeout(() => {
+      setIsCopied(false);
+    }, 250);
+  };
 
   return (
     <Box
@@ -63,16 +73,16 @@ function Footer() {
           </Typography>
         </Box>
         <Box>
-          <CustomLink color="#fff" href="#">
+          <CustomLink color="#fff" href="/">
             Home
           </CustomLink>
           |
-          <CustomLink color="#fff" href="#">
+          <CustomLink color="#fff" href="/services">
             Services
           </CustomLink>
           |
-          <CustomLink color="#fff" href="#">
-            Contact
+          <CustomLink color="#fff" href="/contact">
+            About Us
           </CustomLink>
         </Box>
       </Box>
@@ -90,17 +100,53 @@ function Footer() {
           reserved.
         </Typography>
         <Box>
-          <CustomIconButton>
+          <CustomIconButton onClick={handlePhoneClick}>
             <CallIcon />
+            <Typography
+              variant="h6"
+              component="div"
+              sx={{ fontSize: "0.7rem" }}
+            >
+              +94 71 362 3663
+            </Typography>
           </CustomIconButton>
           <CustomIconButton>
-            <EmailIcon />
+            <CustomLink
+              color="#fff"
+              href="mailto:cleanparkautoservice@gmail.com?subject=Inquiry"
+            >
+              <EmailIcon />
+            </CustomLink>
           </CustomIconButton>
+
           <CustomIconButton>
-            <FacebookIcon />
+            <CustomLink
+              color="#fff"
+              href="https://www.facebook.com/profile.php?id=100063835194124"
+              target="_blank" // Open link in a new tab
+            >
+              <FacebookIcon />
+            </CustomLink>
           </CustomIconButton>
         </Box>
       </Box>
+      {isCopied && (
+        <Box
+          sx={{
+            position: "fixed",
+            top: "36rem",
+            left: "69%",
+            transform: "translateX(-50%)",
+            color: "#fff",
+            padding: "0.5rem 1rem",
+            borderRadius: "0.5rem",
+            zIndex: 999,
+            color: "red",
+          }}
+        >
+          Copied!
+        </Box>
+      )}
     </Box>
   );
 }

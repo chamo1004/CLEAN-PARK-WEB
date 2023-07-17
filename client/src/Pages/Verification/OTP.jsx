@@ -1,7 +1,8 @@
-import { Box, Button, Grid, Paper, TextField, Typography } from "@mui/material";
+import { Box, Button, Grid, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import banner06 from "../../img/banner06.jpg";
 
 const theme = createTheme({
   palette: {
@@ -15,78 +16,83 @@ const theme = createTheme({
 });
 
 const OTP = () => {
-  const [rememberMe, setRememberMe] = useState(false);
+  const [otp, setOTP] = useState(["", "", "", ""]);
 
-  const handleSetRememberMe = () => setRememberMe(!rememberMe);
+  const handleOTPChange = (index, value) => {
+    const updatedOTP = [...otp];
+    updatedOTP[index] = value;
+    setOTP(updatedOTP);
+  };
 
   return (
-    <ThemeProvider theme={theme}>
-      <>
+    <>
+      <ThemeProvider theme={theme}>
         <Grid
-          item
-          xs={12}
-          sm={8}
-          md={4} // Adjust the width by modifying the `md` value
-          component={Paper}
-          elevation={6}
-          m={10}
-          ml={50}
-          mr={50}
-          p={4}
+          container
+          justifyContent="center"
+          alignItems="center"
+          sx={{
+            minHeight: "100vh",
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(${banner06})`,
+            backgroundSize: "cover",
+            p: 8,
+          }}
         >
-          <Box
-            sx={{
-              my: 2,
-              mx: 4,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-          >
-            <Typography component="h1" variant="h4">
-              OTP verification code
-            </Typography>
-            <Typography component="h1" variant="body1" color="#C0C0C0">
-              We have sent a verification code to your mobile number
-            </Typography>
-            <Box component="form" noValidate sx={{ mt: 1, md: 4 }}>
-              <Grid container spacing={1} alignItems="center">
-                <Grid item>
-                  <TextField
-                    variant="outlined"
-                    margin="normal"
-                    fullWidth
-                    name="digit1"
-                    inputProps={{ maxLength: 1 }}
-                  />
-                </Grid>
-                <Grid item>
-                  <TextField
-                    variant="outlined"
-                    margin="normal"
-                    fullWidth
-                    name="digit2"
-                    inputProps={{ maxLength: 1 }}
-                  />
-                </Grid>
-                <Grid item>
-                  <TextField
-                    variant="outlined"
-                    margin="normal"
-                    fullWidth
-                    name="digit3"
-                    inputProps={{ maxLength: 1 }}
-                  />
-                </Grid>
-                <Grid item>
-                  <TextField
-                    variant="outlined"
-                    margin="normal"
-                    fullWidth
-                    name="digit4"
-                    inputProps={{ maxLength: 1 }}
-                  />
-                </Grid>
+          <Grid item xs={12} sm={8} elevation={4} p={4} ml={30} mr={30}>
+            <Box
+              sx={{
+                width: "40em",
+                height: "30em",
+                padding: "4rem",
+                paddingRight: "8rem",
+                paddingLeft: "8rem",
+                backgroundColor: "rgba(255, 255, 255, 0.15)",
+                border: "1px solid rgba(255, 255, 255, 0.222)",
+                backdropFilter: "blur(20px)",
+                borderRadius: ".7rem",
+                transition: "all ease .3s",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+                "&:hover": {
+                  boxShadow: "0px 0px 20px 1px #ffbb763f",
+                  border: "1px solid rgba(255, 255, 255, 0.454)",
+                },
+              }}
+            >
+              <Typography variant="h4" sx={{ mb: 2 }} textAlign="center">
+                Join our network
+              </Typography>
+              <Typography
+                variant="body1"
+                color="#C0C0C0"
+                sx={{ mb: 2 }}
+                textAlign="center"
+              >
+                We'd love to have you!
+              </Typography>
+
+              <Grid container justifyContent="center" spacing={1}>
+                {otp.map((digit, index) => (
+                  <Grid item key={index}>
+                    <TextField
+                      value={digit}
+                      onChange={(e) => handleOTPChange(index, e.target.value)}
+                      variant="outlined"
+                      size="small"
+                      inputProps={{
+                        maxLength: 1,
+                        style: {
+                          textAlign: "center",
+                          fontSize: "1.5rem",
+                          letterSpacing: "1rem",
+                          width: "3rem",
+                          height: "3rem",
+                        },
+                      }}
+                    />
+                  </Grid>
+                ))}
               </Grid>
 
               <Button
@@ -95,25 +101,21 @@ const OTP = () => {
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ mt: 2, mb: 3 }}
+                sx={{
+                  mt: 2,
+                  mb: 3,
+                }}
               >
                 Verify me
               </Button>
-              <Grid
-                container
-                sx={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
+              <Grid container justifyContent="center" alignItems="center">
                 <Grid item>
                   <Typography
                     variant="body1"
                     color="#C0C0C0"
                     fontWeight="regular"
                   >
-                    Didn&apos;t receive the code?{" "}
+                    Didn't receive the code?{" "}
                     <Typography
                       component={Link}
                       to="/"
@@ -128,10 +130,10 @@ const OTP = () => {
                 </Grid>
               </Grid>
             </Box>
-          </Box>
+          </Grid>
         </Grid>
-      </>
-    </ThemeProvider>
+      </ThemeProvider>
+    </>
   );
 };
 

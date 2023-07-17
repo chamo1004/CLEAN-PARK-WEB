@@ -10,9 +10,7 @@ export default function Verification() {
       <Box>
         <NavBar />
       </Box>
-
       <OTP />
-
       <Box>
         <Footer03 />
       </Box>

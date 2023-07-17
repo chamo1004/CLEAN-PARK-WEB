@@ -20,11 +20,11 @@ import { Link } from "react-router-dom";
 const drawerWidth = 240;
 const navItems = [
   { label: "Home", path: "/home" },
-  { label: "Contact", path: "/home" },
+  { label: "About Us", path: "/home" },
   { label: "My appointments", path: "/appointment/list" },
 ];
 
-function NavBar(props) {
+function NavBar02(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -158,4 +158,4 @@ function NavBar(props) {
   );
 }
 
-export default NavBar;
+export default NavBar02;

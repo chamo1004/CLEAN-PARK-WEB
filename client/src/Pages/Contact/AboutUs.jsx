@@ -1,9 +1,10 @@
 import React from "react";
-import { Box, Grid, Typography, styled } from "@mui/material";
+import { Box, Grid, Button, Typography, styled } from "@mui/material";
 import HowToRegIcon from "@mui/icons-material/HowToReg";
 import ScheduleIcon from "@mui/icons-material/Schedule";
 import StarsIcon from "@mui/icons-material/Stars";
 import PeopleIcon from "@mui/icons-material/People";
+import { Link } from "react-router-dom";
 
 const AboutUs = ({ aboutUsRef }) => {
   const SectionTitle = styled(Typography)(({ theme }) => ({
@@ -74,6 +75,26 @@ const AboutUs = ({ aboutUsRef }) => {
                   car product brands to enhance the services we offer.
                 </Typography>
               </Box>
+            </Box>
+          </Box>
+        </Grid>
+        <Grid item xs={12} sm={8} md={5} elevation={6} mr={63} p={4}>
+          <Box
+            sx={{
+              position: "relative",
+              alignItems: "center",
+            }}
+          >
+            <Box>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11006.892782113175!2d81.33444663000726!3d6.922356807227263!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae4519069dc4eb3%3A0xe5ac9d75a72d3627!2sObbegoda%20Junction!5e0!3m2!1sen!2slk!4v1689587933852!5m2!1sen!2slk"
+                width={1000}
+                height={400}
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
             </Box>
           </Box>
         </Grid>
@@ -304,15 +325,57 @@ const AboutUs = ({ aboutUsRef }) => {
           </Box>
         </Grid>
 
-        <Grid item xs={12}>
-          <Box>
-            <BodyText variant="body1">
-              Join us at Clean Park Auto Service and experience the difference
-              of exceptional automotive care. We are here to serve you with
-              integrity, expertise, and a commitment to excellence.
-            </BodyText>
+        <Box
+          sx={{
+            position: "relative",
+            alignItems: "center",
+          }}
+        >
+          <Box
+            sx={{
+              width: "56em",
+              mt: 10,
+              padding: "2rem",
+              backgroundColor: "rgba(255, 255, 255, 0.074)",
+              border: "1px solid rgba(255, 255, 255, 0.222)",
+              backdropFilter: "blur(20px)",
+              borderRadius: ".7rem",
+              transition: "all ease .3s",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+              "&:hover": {
+                boxShadow: "0px 0px 20px 1px #ffbb763f",
+                border: "1px solid rgba(255, 255, 255, 0.454)",
+              },
+            }}
+          >
+            <Box sx={{ textAlign: "center", marginBottom: "1px" }}>
+              <Typography variant="body1" sx={{ textAlign: "center" }}>
+                We are here to serve you with integrity, expertise, and a
+                commitment to excellence. Join us at Clean Park Auto Service and
+                experience the difference of exceptional automotive care.
+              </Typography>
+            </Box>
           </Box>
-        </Grid>
+          <Button
+            component={Link}
+            to="/signup"
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{
+              mt: 2,
+              mb: 3,
+              backgroundColor: "red",
+              "&:hover": {
+                backgroundColor: "#000",
+              },
+            }}
+          >
+            Become a member
+          </Button>
+        </Box>
       </Grid>
     </Box>
   );

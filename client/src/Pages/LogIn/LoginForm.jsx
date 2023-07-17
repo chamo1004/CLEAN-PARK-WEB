@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import banner04 from "../../img/banner04.jpg";
+import { Link as RouterLink } from "react-router-dom";
 
 const theme = createTheme({
   palette: {
@@ -129,6 +130,8 @@ const LoginForm = () => {
                 />
                 <Box display="flex" alignItems="center"></Box>
                 <Button
+                  component={RouterLink}
+                  to="/profile01"
                   type="submit"
                   fullWidth
                   variant="contained"
