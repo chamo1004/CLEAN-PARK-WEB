@@ -1,122 +1,112 @@
 import React, { useState } from "react";
-import { Box, Grid, Typography } from "@mui/material";
-import banner04 from "../../../img/banner04.jpg";
+import "./profile01.css";
+import logocore from "../../../img/logo192.png";
+import Button from "@mui/material/Button";
+import { Link } from "react-router-dom";
+import CarDetails from "./CarDetails";
+const YourInfo = () => (
+  <div>
+    <h2>Welcome to the YourInfo!</h2>
+    <p>This is the Feed content.</p>
+  </div>
+);
 
-const categories = [
-  {
-    id: 1,
-    name: "Your info",
-    description: "Description for Category 1",
-  },
-  {
-    id: 2,
-    name: "Car details",
-    description: "Description for Category 2",
-  },
-  {
-    id: 3,
-    name: "Services",
-    description: "Description for Category 3",
-  },
-  {
-    id: 4,
-    name: "Make an appointment",
-    description: "Description for Category 4",
-  },
-];
+const Services = () => (
+  <div>
+    <h2>Welcome to the Services!</h2>
+    <p>This is the Feed content.</p>
+  </div>
+);
 
-const Dashboard01 = () => {
-  const [selectedCategory, setSelectedCategory] = useState(null);
+const MakeAppointments = () => (
+  <div>
+    <h2>Welcome to the MakeAppointments!</h2>
+    <p>This is the Feed content.</p>
+  </div>
+);
 
-  const handleCategorySelect = (category) => {
-    setSelectedCategory(category);
+export default function Profile01() {
+  const [activeTab, setActiveTab] = useState("feed");
+
+  const handleTabClick = (tab) => {
+    setActiveTab(tab);
+  };
+
+  const renderContent = () => {
+    switch (activeTab) {
+      case "feed":
+        return <YourInfo />;
+      case "assignments":
+        return <CarDetails />;
+      case "courses":
+        return <Services />;
+      case "students":
+        return <MakeAppointments />;
+      default:
+        return null;
+    }
   };
 
   return (
-    <>
-      <Box
-        sx={{
-          backgroundColor: "black",
-          backgroundSize: "cover",
-          p: 4,
-          alignItems: "center",
-        }}
-      >
-        <Grid item xs={12} sm={8} md={5} elevation={6} m>
-          <Box
-            sx={{
-              width: "100%",
-              height: "89vh",
-              backgroundColor: "rgba(255, 255, 255, 0.15)",
-              border: "1px solid rgba(255, 255, 255, 0.222)",
-              backdropFilter: "blur(20px)",
-              borderRadius: ".7rem",
-              transition: "all ease .3s",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "space-between",
-              overflow: "hidden",
+    <div className="feed">
+      <div className="dash-container">
+        <div className="dash-sidebar">
+          <ul className="dash-nav">
+            <li>
+              <a
+                href="#"
+                className={`dash-nav-item name ${
+                  activeTab === "feed" ? "active" : ""
+                }`}
+                onClick={() => handleTabClick("feed")}
+              >
+                <div className="dash-name">
+                  <h1 style={{ marginTop: "-0.5vh" }}>Dulan Chathuranga</h1>
+                  <h2>dulan.chr@gmail.com</h2>
+                </div>
+              </a>
+            </li>
+            <div className="dash-name">
+              {/* <img
+              src={logocore}
+              width={40}
+              alt="logocore"
+              style={{ marginLeft: ".5vw" }}
+            /> */}
 
-              "&:hover": {
-                boxShadow: "0px 0px 20px 1px #ffbb763f",
-                border: "1px solid rgba(255, 255, 255, 0.454)",
-              },
-            }}
-          >
-            <Grid container>
-              <Grid item xs={3}>
-                {categories.map((category) => (
-                  <Box
-                    key={category.id}
-                    sx={{
-                      padding: 1,
-                      cursor: "pointer",
-                      backgroundColor:
-                        selectedCategory?.id === category.id
-                          ? "#ffffff26"
-                          : "transparent",
-                      color:
-                        selectedCategory?.id === category.id
-                          ? "#fff"
-                          : "#ffffff",
-                      "&:hover": {
-                        backgroundColor: "#ffffff11",
-                      },
-                    }}
-                    onClick={() => handleCategorySelect(category)}
-                  >
-                    <Typography variant="h6">{category.name}</Typography>
-                  </Box>
-                ))}
-              </Grid>
-
-              <Grid item xs={8}>
-                <Box
-                  sx={{
-                    padding: 2,
-                    backgroundImage: `linear-gradient(rgba(0, 0, 0, .9), rgba(0, 0, 0, 0.9)), url(${banner04})`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    minHeight: "100vh",
-                    minWidth: "80vw",
-                    color: "#ffffff",
-                  }}
-                >
-                  {selectedCategory ? (
-                    <Typography variant="body1">
-                      {selectedCategory.description}
-                    </Typography>
-                  ) : (
-                    <Typography variant="body1">Select a category</Typography>
-                  )}
-                </Box>
-              </Grid>
-            </Grid>
-          </Box>
-        </Grid>
-      </Box>
-    </>
+              <h2 style={{ fontWeight: "bold" }}>Your Vehicles</h2>
+            </div>
+            <li>
+              <a
+                href="#"
+                className={`dash-nav-item ${
+                  activeTab === "assignments" ? "active" : ""
+                }`}
+                onClick={() => handleTabClick("assignments")}
+              >
+                CarName
+              </a>
+            </li>
+          </ul>
+          <div className="dash-logo">
+            <img src={logocore} width={40} alt="logocore" />
+            <Button
+              component={Link}
+              to="/auth/sign-up"
+              variant="contained"
+              sx={{
+                backgroundColor: "red",
+                color: "",
+                marginTop: -3.5,
+                marginLeft: 3,
+              }}
+            >
+              Log Out
+            </Button>
+          </div>
+        </div>
+        <div className="dash-content">{renderContent()}</div>
+      </div>
+    </div>
   );
-};
-
-export default Dashboard01;
+}

@@ -77,11 +77,11 @@ const SignupForm = () => {
     }
 
     // Validate confirm password
-    const confirmPassword = formData.get("confirm password");
+    const confirmPassword = formData.get("confirmPassword");
     if (!confirmPassword) {
-      errors["confirm password"] = "Confirm password is required";
+      errors.confirmPassword = "Confirm password is required";
     } else if (password !== confirmPassword) {
-      errors["confirm password"] = "Passwords do not match";
+      errors.confirmPassword = "Passwords do not match";
     }
 
     // If there are validation errors, set the errors state and return
@@ -93,45 +93,31 @@ const SignupForm = () => {
     // Clear any previous errors
     setErrors({});
 
-    // Prepare the data for POST request
-    const userData = {
-      email,
-      password,
-      firstname: firstName,
-      lastname: lastName,
-      tel: phoneNumber,
-    };
-
     try {
-      // Create a new user
-      const userResponse = await axios.post(
-        "http://localhost:3001/user",
-        userData
-      );
+      // Create a new User
+      const userResponse = await axios.post("http://localhost:3001/user", {
+        email: formData.get("email"),
+        password: formData.get("password"),
+        firstname: formData.get("firstName"),
+        lastname: formData.get("lastName"),
+        tel: "", // Add the tel value here
+      });
 
       if (userResponse.data) {
-        const user = userResponse.data;
-
-        // Send POST request to create a new customer
-        const customerData = {
-          address,
-          backuptel: backupTel,
-          userId: user.userid,
-        };
-
-        const customerResponse = await axios.post(
-          "http://localhost:3001/customer",
-          customerData
-        );
+        // Create a new Customer
+        const customerResponse = await axios.post("http://localhost:3001/customer", {
+          address: formData.get("address"), // Add the address value here
+          backuptel: formData.get("backuptel"), // Add the backuptel value here
+          userid: userResponse.data.userid,
+        });
 
         if (customerResponse.data) {
-          // Redirect to the OTP verification page
-          navigate("/otp");
+          navigate("/dashboard"); // Change "/dashboard" to the desired route after successful signup
         } else {
-          throw new Error("Failed to sign up as a customer");
+          throw new Error("Failed to create customer");
         }
       } else {
-        throw new Error("Failed to sign up as a user");
+        throw new Error("Failed to create user");
       }
     } catch (error) {
       console.error(error);
@@ -171,7 +157,7 @@ const SignupForm = () => {
                 height: "63em",
                 padding: "4rem",
                 paddingBottom: "12rem",
-                backgroundColor: "rgba(255, 255, 255, 0.15)",
+                backgroundColor: "rgba(255, 255, 255, 0.5)",
                 border: "1px solid rgba(255, 255, 255, 0.222)",
                 backdropFilter: "blur(20px)",
                 borderRadius: ".7rem",
@@ -205,7 +191,7 @@ const SignupForm = () => {
                   label="First name"
                   name="firstName"
                   autoComplete="firstName"
-                  error={errors.firstName ? true : false}
+                  error={!!errors.firstName}
                   helperText={errors.firstName}
                 />
                 <TextField
@@ -216,7 +202,7 @@ const SignupForm = () => {
                   label="Last name"
                   name="lastName"
                   autoComplete="lastName"
-                  error={errors.lastName ? true : false}
+                  error={!!errors.lastName}
                   helperText={errors.lastName}
                 />
                 <TextField
@@ -227,7 +213,7 @@ const SignupForm = () => {
                   label="Address"
                   name="address"
                   autoComplete="address"
-                  error={errors.address ? true : false}
+                  error={!!errors.address}
                   helperText={errors.address}
                 />
                 <TextField
@@ -238,7 +224,7 @@ const SignupForm = () => {
                   label="Email address"
                   name="email"
                   autoComplete="email"
-                  error={errors.email ? true : false}
+                  error={!!errors.email}
                   helperText={errors.email}
                 />
                 <TextField
@@ -250,19 +236,18 @@ const SignupForm = () => {
                   type="text"
                   name="phonenumber"
                   autoComplete="phonenumber"
-                  error={errors.phonenumber ? true : false}
+                  error={!!errors.phonenumber}
                   helperText={errors.phonenumber}
                 />
                 <TextField
                   margin="normal"
-                  required
                   fullWidth
                   id="backuptel"
                   label="Secondary phone number"
                   type="text"
                   name="backuptel"
                   autoComplete="backuptel"
-                  error={errors.backuptel ? true : false}
+                  error={!!errors.backuptel}
                   helperText={errors.backuptel}
                 />
                 <TextField
@@ -274,24 +259,22 @@ const SignupForm = () => {
                   type="password"
                   id="password"
                   autoComplete="current-password"
-                  error={errors["password"] ? true : false}
-                  helperText={errors["password"]}
+                  error={!!errors.password}
+                  helperText={errors.password}
                 />
                 <TextField
                   margin="normal"
                   required
                   fullWidth
-                  name="confirm password"
+                  name="confirmPassword"
                   label="Confirm password"
                   type="password"
                   id="confirmPassword"
                   autoComplete="confirm-password"
-                  error={errors["confirm password"] ? true : false}
-                  helperText={errors["confirm password"]}
+                  error={!!errors.confirmPassword}
+                  helperText={errors.confirmPassword}
                 />
                 <Button
-                  component={Link}
-                  to="/verification"
                   type="submit"
                   fullWidth
                   variant="contained"
