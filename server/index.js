@@ -30,8 +30,13 @@ app.use("/car", CarRouter);
 const AppointmentRouter = require('./routes/Appointments');
 app.use("/appointment", AppointmentRouter);
 
-const ProcessRouter = require('./routes/Appointments');
-app.use("/appointment", AppointmentRouter);
+const ProcessRouter = require('./routes/Processes');
+app.use("/process", ProcessRouter);
+
+
+const CartabRouter = require('./routes/CarTabs');
+app.use("/cartab", CartabRouter);
+
 
 db.sequelize.sync().then(() => {
     app.listen(3001, () => {

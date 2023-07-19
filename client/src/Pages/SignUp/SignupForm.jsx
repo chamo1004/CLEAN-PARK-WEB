@@ -66,6 +66,8 @@ const SignupForm = () => {
     const backupTel = formData.get("backuptel");
     if (backupTel && !validatePhoneNumber(backupTel)) {
       errors.backuptel = "Invalid secondary phone number";
+    } else if (!validatePhoneNumber(phoneNumber)) {
+      errors.phonenumber = "Invalid phone number";
     }
 
     // Validate password
