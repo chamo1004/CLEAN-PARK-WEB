@@ -19,7 +19,7 @@ import { Link } from "react-router-dom";
 const drawerWidth = 240;
 const navItems = [
   { label: "Home", path: "/" },
-  { label: "About Us", path: "/contact" },
+  { label: "About Us", path: "/aboutus" },
 ];
 
 function NavBar(props) {

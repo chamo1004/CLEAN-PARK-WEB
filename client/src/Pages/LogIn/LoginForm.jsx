@@ -47,29 +47,20 @@ const LoginForm = () => {
       <>
         <Box
           sx={{
-            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(${banner04})`,
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url(${banner04})`,
             backgroundSize: "cover",
             p: 10,
             paddingBottomb: 6,
           }}
         >
-          <Grid
-            item
-            xs={12}
-            sm={8}
-            md={5}
-            elevation={6}
-            mr={40}
-            p={4}
-            ml={30}
-            mr={30}
-          >
+          <Grid item xs={12} sm={8} md={5} elevation={6} mr={40} p={4} ml={30}>
             <Box
               sx={{
                 width: "40em",
                 height: "30em",
                 padding: "4rem",
-                backgroundColor: "rgba(255, 255, 255, 0.15)",
+                marginLeft: "80px",
+                backgroundColor: "rgba(255, 255, 255, 0.5)",
                 border: "1px solid rgba(255, 255, 255, 0.222)",
                 backdropFilter: "blur(20px)",
                 borderRadius: ".7rem",

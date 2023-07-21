@@ -1,4 +1,4 @@
-.feed {
+.yourinfo {
  
     height: 100vh;
     z-index: 10000; 
@@ -145,10 +145,82 @@
   .dash-content {
     border-radius: 0px 0 0 0px;
     flex: 1;
-    padding: 20px;
+    padding: 0px;
     background-color: #F1F3F4;
     overflow: hidden;
     overflow-y: auto;     
   }
+
+  .profile-buttons {
+    display: flex;
+    justify-content: center;
+   
+  }
+  button {
+    padding: 10px 20px;
+    background-color:red;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+   
+  }
+  
+  button:hover {
+    background-color: #0e0f10;
+  }
   
   
+  /* Add this to your existing CSS file */
+.popup-form {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+}
+
+.popup-form-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.popup-form-content .profile-field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.popup-form-content label {
+  font-weight: bold;
+}
+
+.popup-form-content input {
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.popup-form-content button {
+  padding: 10px 20px;
+  background-color: red;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.popup-form-content button:hover {
+  background-color: #0e0f10;
+}

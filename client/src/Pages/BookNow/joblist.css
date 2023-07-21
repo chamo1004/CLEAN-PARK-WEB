@@ -1,0 +1,48 @@
+.job-list {
+  width: 90%;
+  height: 100%;
+  margin: 80px;
+  padding: 40px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.856);
+  color: aliceblue;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.job-container {
+  margin-top: 20px;
+  display: flex;
+  gap: 20px;
+}
+
+.job-item {
+  width: 400px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  background-color: white;
+  color: black;
+  transition: background-color 0.3s;
+}
+
+.job-item:hover {
+  background-color: lightgray; 
+}
+
+.job-item h2 {
+  margin-bottom: 5px;
+}
+
+.job-item p {
+  margin: 5px 0;
+}
+
+.job-button {
+  display: flex; 
+  justify-content: center;
+  margin-top: 10px;
+}

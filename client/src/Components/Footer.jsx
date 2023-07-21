@@ -32,7 +32,7 @@ function Footer() {
     setIsCopied(true);
     setTimeout(() => {
       setIsCopied(false);
-    }, 250);
+    }, 500);
   };
 
   return (
@@ -81,7 +81,7 @@ function Footer() {
             Services
           </CustomLink>
           |
-          <CustomLink color="#fff" href="/contact">
+          <CustomLink color="#fff" href="/aboutus">
             About Us
           </CustomLink>
         </Box>
@@ -134,8 +134,8 @@ function Footer() {
         <Box
           sx={{
             position: "fixed",
-            top: "36rem",
-            left: "69%",
+            top: "38rem",
+            left: "71%",
             transform: "translateX(-50%)",
             color: "#fff",
             padding: "0.5rem 1rem",

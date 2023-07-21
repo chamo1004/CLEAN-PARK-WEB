@@ -107,11 +107,14 @@ const SignupForm = () => {
 
       if (userResponse.data) {
         // Create a new Customer
-        const customerResponse = await axios.post("http://localhost:3001/customer", {
-          address: formData.get("address"), // Add the address value here
-          backuptel: formData.get("backuptel"), // Add the backuptel value here
-          userid: userResponse.data.userid,
-        });
+        const customerResponse = await axios.post(
+          "http://localhost:3001/customer",
+          {
+            address: formData.get("address"), // Add the address value here
+            backuptel: formData.get("backuptel"), // Add the backuptel value here
+            userid: userResponse.data.userid,
+          }
+        );
 
         if (customerResponse.data) {
           navigate("/dashboard"); // Change "/dashboard" to the desired route after successful signup
@@ -147,18 +150,19 @@ const SignupForm = () => {
           alignItems="center"
           sx={{
             minHeight: "100vh",
-            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(${banner05})`,
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)), url(${banner05})`,
             backgroundSize: "cover",
             p: 8,
           }}
         >
-          <Grid item xs={12} sm={8} elevation={6} mr={30} p={4} ml={30}>
+          <Grid item xs={12} sm={8} elevation={6} p={4}>
             <Box
               sx={{
                 width: "45em",
                 height: "63em",
                 padding: "4rem",
                 paddingBottom: "12rem",
+                marginLeft: "78px",
                 backgroundColor: "rgba(255, 255, 255, 0.5)",
                 border: "1px solid rgba(255, 255, 255, 0.222)",
                 backdropFilter: "blur(20px)",

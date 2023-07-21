@@ -1,4 +1,4 @@
-module.exports = (sequelize, DataTypes) => {
+module.exports = (sequelize, DataTypes, models) => {
   const Service = sequelize.define("Service", {
     serviceid: {
       type: DataTypes.INTEGER,
@@ -16,11 +16,18 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
 
-  // Define the many-to-many association with Appointment
-  Service.belongsToMany(sequelize.models.Appointment, {
-    through: "AppointmentService", // This is the join table name
-    foreignKey: "serviceid", // The foreign key in the join table related to the Service model
+  
+  Service.belongsToMany(models.Appointment, {
+    through: models.AppointmentService, 
+    foreignKey: 'serviceid', 
+    otherKey: 'appointmentid', 
   });
+   
+  Service.hasMany(models.Job, {
+    foreignKey: 'serviceid',
+    as: 'job',
+  });
+ 
 
   return Service;
 };

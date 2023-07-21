@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
       include: [
         {
           model: Service,
-          attributes: ['serviceid', 'servicetype', 'description'],
+          attributes: ['servicetype'],
           through: {
             model: AppointmentService,
           },

@@ -5,6 +5,7 @@ import ScheduleIcon from "@mui/icons-material/Schedule";
 import StarsIcon from "@mui/icons-material/Stars";
 import PeopleIcon from "@mui/icons-material/People";
 import { Link } from "react-router-dom";
+import banner09 from "../../img/banner09.jpg";
 
 const AboutUs = ({ aboutUsRef }) => {
   const SectionTitle = styled(Typography)(({ theme }) => ({
@@ -21,6 +22,7 @@ const AboutUs = ({ aboutUsRef }) => {
       ref={aboutUsRef}
       sx={{
         backgroundColor: "black",
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${banner09})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         minHeight: "calc(100vh - 90px)",
@@ -49,8 +51,10 @@ const AboutUs = ({ aboutUsRef }) => {
               sx={{
                 width: "56em",
                 padding: "1rem",
-                backgroundColor: "rgba(255, 255, 255, 0.074)",
-                border: "1px solid rgba(255, 255, 255, 0.222)",
+                marginLeft: "37px",
+                backgroundColor: "rgba(255, 255, 255, 0.7)",
+                color: "black",
+                border: "0px solid rgba(255, 255, 255, 0.222)",
                 backdropFilter: "blur(20px)",
                 borderRadius: ".7rem",
                 transition: "all ease .3s",
@@ -59,7 +63,7 @@ const AboutUs = ({ aboutUsRef }) => {
                 justifyContent: "space-between",
                 "&:hover": {
                   boxShadow: "0px 0px 20px 1px #ffbb763f",
-                  border: "1px solid rgba(255, 255, 255, 0.454)",
+                  border: "0px solid rgba(255, 255, 255, 0.454)",
                 },
               }}
             >
@@ -78,7 +82,7 @@ const AboutUs = ({ aboutUsRef }) => {
             </Box>
           </Box>
         </Grid>
-        <Grid item xs={12} sm={8} md={5} elevation={6} mr={63} p={4}>
+        <Grid item xs={12} sm={8} md={5} elevation={6} mr={55} p={4}>
           <Box
             sx={{
               position: "relative",
@@ -111,7 +115,8 @@ const AboutUs = ({ aboutUsRef }) => {
               width: "18em",
               height: "19em",
               padding: "1rem",
-              backgroundColor: "rgba(255, 255, 255, 0.074)",
+              backgroundColor: "rgba(255, 255, 255, 0.7)",
+              color: "black",
               border: "1px solid rgba(255, 255, 255, 0.222)",
               backdropFilter: "blur(20px)",
               borderRadius: ".7rem",
@@ -166,7 +171,8 @@ const AboutUs = ({ aboutUsRef }) => {
               width: "18em",
               height: "19em",
               padding: "1rem",
-              backgroundColor: "rgba(255, 255, 255, 0.074)",
+              backgroundColor: "rgba(255, 255, 255, 0.7)",
+              color: "black",
               border: "1px solid rgba(255, 255, 255, 0.222)",
               backdropFilter: "blur(20px)",
               borderRadius: ".7rem",
@@ -221,7 +227,8 @@ const AboutUs = ({ aboutUsRef }) => {
               width: "18em",
               height: "19em",
               padding: "1rem",
-              backgroundColor: "rgba(255, 255, 255, 0.074)",
+              backgroundColor: "rgba(255, 255, 255, 0.7)",
+              color: "black",
               border: "1px solid rgba(255, 255, 255, 0.222)",
               backdropFilter: "blur(20px)",
               borderRadius: ".7rem",
@@ -276,7 +283,8 @@ const AboutUs = ({ aboutUsRef }) => {
               width: "18em",
               height: "19em",
               padding: "1rem",
-              backgroundColor: "rgba(255, 255, 255, 0.074)",
+              backgroundColor: "rgba(255, 255, 255, 0.7)",
+              color: "black",
               border: "1px solid rgba(255, 255, 255, 0.222)",
               backdropFilter: "blur(20px)",
               borderRadius: ".7rem",
@@ -336,8 +344,9 @@ const AboutUs = ({ aboutUsRef }) => {
               width: "56em",
               mt: 10,
               padding: "2rem",
-              backgroundColor: "rgba(255, 255, 255, 0.074)",
-              border: "1px solid rgba(255, 255, 255, 0.222)",
+              backgroundColor: "rgba(255, 255, 255, 0.7)",
+              color: "black",
+              border: "0px solid rgba(255, 255, 255, 0.222)",
               backdropFilter: "blur(20px)",
               borderRadius: ".7rem",
               transition: "all ease .3s",
@@ -346,7 +355,7 @@ const AboutUs = ({ aboutUsRef }) => {
               justifyContent: "space-between",
               "&:hover": {
                 boxShadow: "0px 0px 20px 1px #ffbb763f",
-                border: "1px solid rgba(255, 255, 255, 0.454)",
+                border: "0px solid rgba(255, 255, 255, 0.454)",
               },
             }}
           >

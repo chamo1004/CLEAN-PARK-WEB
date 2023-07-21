@@ -4,7 +4,7 @@ import NavBar from "../../Components/NavBar";
 import Footer from "../../Components/Footer";
 import AboutUs from "./AboutUs";
 
-export default function Contact() {
+export default function Aboutmain() {
   return (
     <>
       <Box>

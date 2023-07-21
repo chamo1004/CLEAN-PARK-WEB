@@ -36,7 +36,7 @@ const Welcome = ({ ourServicesRef }) => {
               <Button
                 variant="contained"
                 component={RouterLink}
-                to="/contact"
+                to="/aboutus"
                 sx={{
                   backgroundColor: "red",
                   color: "#fff",

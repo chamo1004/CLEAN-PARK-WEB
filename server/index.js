@@ -38,6 +38,11 @@ const CartabRouter = require('./routes/CarTabs');
 app.use("/cartab", CartabRouter);
 
 
+const AppoitCardRouter = require('./routes/AppointmentCards');
+app.use("/appointmentcard", AppoitCardRouter);
+
+
+
 db.sequelize.sync().then(() => {
     app.listen(3001, () => {
         console.log('Server running on port 3001');

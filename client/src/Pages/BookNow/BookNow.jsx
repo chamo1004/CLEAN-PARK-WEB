@@ -1,8 +1,8 @@
 import React from "react";
 import { Box } from "@mui/material";
 import NavBar from "../../Components/NavBar";
+import JobList from "./JobList";
 import Footer03 from "../../Components/Footer03";
-import Appointment from "../BookNow/Appointments";
 
 export default function BookNow() {
   return (
@@ -10,14 +10,10 @@ export default function BookNow() {
       <Box>
         <NavBar />
       </Box>
-      <Box sx={{
-          backgroundColor: "black",
-          
-        }}><Appointment /></Box>
-      
-      <Box>
-        <Footer03 />
-      </Box>
+
+      <JobList />
+
+      <Footer03 />
     </>
   );
 }
