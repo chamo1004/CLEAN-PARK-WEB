@@ -7,7 +7,7 @@ import LogIn from "../Pages/LogIn/LogIn";
 import SignUp from "../Pages/SignUp/SignIn";
 import Verification from "../Pages/Verification/Verification";
 import Profile01 from "../Pages/Profile/Profile01/Profile01";
-
+import Profile02 from "../Pages/Profile/Profile02/Profile02";
 
 export default function () {
   return (
@@ -21,7 +21,7 @@ export default function () {
           <Route exact path="/signup" element={<SignUp />}></Route>
           <Route exact path="/verification" element={<Verification />}></Route>
           <Route exact path="/profile01" element={<Profile01 />}></Route>
-        
+          <Route exact path="/profile02" element={<Profile02 />}></Route>
         </Routes>
       </Router>
     </div>

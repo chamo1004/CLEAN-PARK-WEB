@@ -122,7 +122,7 @@ const LoginForm = () => {
                 <Box display="flex" alignItems="center"></Box>
                 <Button
                   component={RouterLink}
-                  to="/profile01"
+                  to="/profile02"
                   type="submit"
                   fullWidth
                   variant="contained"

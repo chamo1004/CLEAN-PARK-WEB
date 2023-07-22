@@ -46,16 +46,12 @@ export default function AppointmentsTab() {
     try {
       const response = await axios.get("http://localhost:3001/car");
       if (response.data && response.data.length > 0) {
-        // Assuming you have only one car record in the database
-        setCarData(response.data[0]);
+        setCarData(response.data);
       }
     } catch (error) {
       console.error("Error fetching car data:", error);
     }
   };
-
-
-  
 
   const handleChange = (event) => {
     const { name, value, type, checked } = event.target;
@@ -141,16 +137,17 @@ export default function AppointmentsTab() {
 
   return (
     <div className="carcontorls">
-      <div className="card2">
-        <div className="card2-title">
-          <h1>The, Plad 02 {vehicleModel}</h1>
-        </div>
-
-        <div className="card2-subtitle">
-          <h2>BX-3422{vehicleNumber}</h2>
-        </div>
-      </div>
-
+      {carData &&
+        carData.map((car) => (
+          <div key={car.id} className="card2">
+            <div className="card2-title">
+              <h1>{car.model}</h1>
+            </div>
+            <div className="card2-subtitle">
+              <h2>{car.number}</h2>
+            </div>
+          </div>
+        ))}
       <div className="appointmentss">
         <h2
           style={{
