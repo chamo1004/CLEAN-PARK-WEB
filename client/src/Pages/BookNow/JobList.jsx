@@ -33,9 +33,6 @@ const JobList = () => {
       price: 500,
     };
 
-    // You can also send a POST request to the backend to create the new job there
-    // and then update the frontend with the response data
-
     addNewJob(newJob);
   };
 

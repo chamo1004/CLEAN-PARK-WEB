@@ -1,20 +1,26 @@
 const express = require('express');
 const router = express.Router();
-const { Customer } = require('../models');
+const { Customer, User, Car } = require('../models');
 
-router.get('/', async (req, res) => {
- const listOfCustomer = await Customer.findAll();
- res.json(listOfCustomer);
+router.get("/", async (req, res) => {
+  try {
+    const listOfCustomers = await Customer.findAll({ include: [User, Car] });
+    res.json(listOfCustomers);
+  } catch (error) {
+    console.error("Error fetching customers:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
 });
 
 router.post('/', async (req, res) => {
-    try {
-      const CustomerData = req.body;
-      const createdCustomer = await Customer.create(CustomerData);
-      res.json(createdCustomer);
-    } catch (error) {
-      res.status(500).json({ error: 'An error occurred while creating the serTab.' });
-    }
-  });
-  
+  try {
+    const customerData = req.body;
+    const newCustomer = await Customer.create(customerData);
+    res.json(newCustomer);
+  } catch (error) {
+    console.error("Error creating customer:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
 module.exports = router;

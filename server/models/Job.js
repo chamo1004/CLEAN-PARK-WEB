@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     Job.associate = (models) => {
       Job.belongsTo(models.Service, {
         foreignKey: 'serviceid',
-        as: 'service',
+       
       });
     };
   

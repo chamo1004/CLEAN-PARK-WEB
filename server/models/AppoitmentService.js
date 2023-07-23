@@ -10,8 +10,19 @@ module.exports = (sequelize, DataTypes) => {
           primaryKey: true,
         },
       },
+      
 
     );
+    AppointmentService.associate = (models) => {
+      AppointmentService.belongsTo(models.Appointment, {
+      foreignKey: "appointmentid",
+    });
+
+
+    AppointmentService.belongsTo(models.Service, {
+      foreignKey: "serviceid",
+    });
+  };
   
     return AppointmentService;
   };

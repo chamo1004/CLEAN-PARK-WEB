@@ -1,0 +1,61 @@
+.appointment-list {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    background-color: #cccccc9e;
+    padding-top: 40px;
+  }
+  
+  h2 {
+    text-align: center;
+  }
+  
+  .appointment-cards {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    overflow: hidden;
+    overflow-y: auto;
+    padding: 90px;
+    padding-top: 20px;
+  }
+  
+  .appointment-card {
+    width: 300px;
+    border: 0px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: white;
+  }
+  
+  .appointment-card h3 {
+    margin: o;
+    color: #333;
+  }
+  
+  .appointment-card p {
+    margin: 5px 0;
+  }
+  
+  .appointment-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  
+
+  .confirm-button{
+    background-color: green;
+  }
+  
+  button:hover {
+    background-color: #1f2123;
+  }
+  
+  button:active {
+    background-color: #1f2123;
+  }
+  

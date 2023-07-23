@@ -1,26 +1,29 @@
 const express = require('express');
 const router = express.Router();
-const { Appointment, Service, AppointmentService } = require('../models');
+const { AppointmentService, Appointment, Service } = require('../models');
 
-// Get all Appointments with associated Services
-router.get('/', async (req, res) => {
+router.get("/", async (req, res) => {
   try {
-    const appointmentsWithServices = await Appointment.findAll({
-      include: [
-        {
-          model: Service,
-          attributes: ['serviceid', 'servicetype', 'description'],
-          through: {
-            model: AppointmentService,
-          },
-        },
-      ],
+    const listOfAppointmentServices = await AppointmentService.findAll({
+      include: [Appointment, Service],
     });
-
-    res.json(appointmentsWithServices);
+    res.json(listOfAppointmentServices);
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Server Error' });
+    console.error("Error fetching appointment services:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+router.post('/', async (req, res) => {
+  try {
+    const appointmentServiceData = req.body;
+    const newAppointmentService = await AppointmentService.create(
+      appointmentServiceData
+    );
+    res.json(newAppointmentService);
+  } catch (error) {
+    console.error("Error creating appointment service:", error);
+    res.status(500).json({ error: "Internal server error" });
   }
 });
 

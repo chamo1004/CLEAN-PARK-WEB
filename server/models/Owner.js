@@ -6,6 +6,18 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement: true,
       primaryKey: true,
     },
+    firstname: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    lastname: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    tel: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     backuptel: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -15,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
    Owner.associate = (models) => {
     Owner.belongsTo(models.User, {
       foreignKey: 'userid',
-      as: 'user',
+      allowNull: false,
     });
   };
 

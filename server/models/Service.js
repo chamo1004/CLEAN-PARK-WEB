@@ -16,16 +16,17 @@ module.exports = (sequelize, DataTypes, models) => {
     },
   });
 
+ 
   
   Service.belongsToMany(models.Appointment, {
     through: models.AppointmentService, 
     foreignKey: 'serviceid', 
-    otherKey: 'appointmentid', 
+   
   });
    
   Service.hasMany(models.Job, {
     foreignKey: 'serviceid',
-    as: 'job',
+   
   });
  
 

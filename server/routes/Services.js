@@ -1,21 +1,27 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const { Service } = require("../models");
+const { Service, Appointment, AppointmentService, Job } = require('../models');
 
 router.get("/", async (req, res) => {
-  const listOfServices = await Service.findAll();
-  res.json(listOfServices);
+  try {
+    const listOfServices = await Service.findAll({
+      include: [Appointment, Job],
+    });
+    res.json(listOfServices);
+  } catch (error) {
+    console.error("Error fetching services:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
 });
 
-router.post("/", async (req, res) => {
+router.post('/', async (req, res) => {
   try {
-    const ServiceData = req.body;
-    const createdService = await Service.create(ServiceData);
-    res.json(createdService);
+    const serviceData = req.body;
+    const newService = await Service.create(serviceData);
+    res.json(newService);
   } catch (error) {
-    res
-      .status(500)
-      .json({ error: "An error occurred while creating the serTab." });
+    console.error("Error creating service:", error);
+    res.status(500).json({ error: "Internal server error" });
   }
 });
 

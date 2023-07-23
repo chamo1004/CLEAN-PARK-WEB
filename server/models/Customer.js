@@ -6,6 +6,18 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement: true,
       primaryKey: true,
     },
+    firstname: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    lastname: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    tel: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     address: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -19,7 +31,10 @@ module.exports = (sequelize, DataTypes) => {
   Customer.associate = (models) => {
     Customer.belongsTo(models.User, {
       foreignKey: 'userid',
-      as: 'user',
+     
+    });
+    Customer.hasMany(models.Car, {
+      foreignKey: "customerid",
     });
   };
 

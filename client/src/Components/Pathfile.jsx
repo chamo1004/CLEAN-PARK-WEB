@@ -6,8 +6,9 @@ import BookNow from "../Pages/BookNow/BookNow";
 import LogIn from "../Pages/LogIn/LogIn";
 import SignUp from "../Pages/SignUp/SignIn";
 import Verification from "../Pages/Verification/Verification";
-import Profile01 from "../Pages/Profile/Profile01/Profile01";
-import Profile02 from "../Pages/Profile/Profile02/Profile02";
+import Profile01 from "../Pages/Profile/Customer/Profile01";
+import Profile02 from "../Pages/Profile/Manager/Profile02";
+import Profile03 from "../Pages/Profile/Owner/Profile03";
 
 export default function () {
   return (
@@ -22,6 +23,7 @@ export default function () {
           <Route exact path="/verification" element={<Verification />}></Route>
           <Route exact path="/profile01" element={<Profile01 />}></Route>
           <Route exact path="/profile02" element={<Profile02 />}></Route>
+          <Route exact path="/profile03" element={<Profile03 />}></Route>
         </Routes>
       </Router>
     </div>

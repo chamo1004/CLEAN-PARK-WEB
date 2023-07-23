@@ -1,6 +1,5 @@
 .job-list {
   width: 90%;
-  height: 100%;
   margin: 80px;
   padding: 40px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
@@ -13,24 +12,28 @@
 
 .job-container {
   margin-top: 20px;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Display three services in a row */
   gap: 20px;
 }
 
 .job-item {
-  width: 400px;
+  width: 450px; 
+  height: 150px; 
   padding: 15px;
+  gap: 15px;
+  margin-left: 12px;
+  margin-bottom: 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  margin-bottom: 10px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  background-color: white;
-  color: black;
+  background-color: black;
+  color: white;
   transition: background-color 0.3s;
 }
 
 .job-item:hover {
-  background-color: lightgray; 
+  background-color: black; 
 }
 
 .job-item h2 {

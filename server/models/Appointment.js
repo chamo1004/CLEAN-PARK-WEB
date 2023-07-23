@@ -32,13 +32,13 @@ module.exports = (sequelize, DataTypes) => {
   Appointment.associate = (models) => {
     Appointment.belongsTo(models.Car, {
       foreignKey: 'carid',
-      as: 'car',
+      
     });
   
     Appointment.belongsToMany(models.Service, {
       through: models.AppointmentService, // Use the join table model
       foreignKey: 'appointmentid', // The foreign key in the join table related to the Appointment model
-      otherKey: 'serviceid', // The foreign key in the join table related to the Service model
+     
     });
 };
   return Appointment;

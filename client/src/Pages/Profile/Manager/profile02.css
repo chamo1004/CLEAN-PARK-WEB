@@ -1,0 +1,227 @@
+.yourinfo {
+ 
+    height: 100vh;
+    z-index: 10000; 
+    position: fixed; 
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .dash-container {
+    height:100%;
+    width: 100%;
+    display: flex;
+    border-radius: 10px;
+
+  }
+  
+  .dash-sidebar {
+    border-radius: 0 0 0 0;
+    width: 250px;
+    background-color: #FAFAFA;
+    color: #171717;
+    padding: 20px;
+  }
+
+  .dash-sidebar2 {
+    margin-top: -10vh;
+    background-size: cover;
+    background-position: center;
+    border-radius: 0 0 0 0;
+    width: 15px;
+  
+    color: #171717;
+    padding: 20px;
+  }
+  .dash-name {
+    
+    text-align: left;
+    margin-bottom: 20px;
+  }
+
+  .dash-name h1  {
+    font-size: 20px;
+    margin-left: 10px;
+    text-align: left;
+    margin-bottom: -1vh;
+  }
+  .dash-name h2 {
+    font-size: 15px;
+    margin-left: 10px;
+    text-align: left;
+    margin-bottom: 20px;
+    font-weight: normal; /* Set the font weight to normal */
+  }
+  
+  .dash-name img {
+    background-color: rgba(0, 0, 0, 0);
+  }
+
+
+  .dash-logo {
+    
+    text-align: left;
+    margin-bottom: 20px;
+  }
+
+  .dash-logo h1  {
+    margin-left: 10px;
+    text-align: left;
+    margin-bottom: 20px;
+  }
+
+  .dash-logo img {
+    margin-top: 2vh;
+
+  }
+  
+  .dash-nav {
+
+    min-height: 80vh;
+    max-height: 80vh;
+    list-style-type: none;
+    padding: 0;
+    overflow: hidden;
+    overflow-y: scroll;
+    
+  }
+  .dash-nav::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .dash-nav::-webkit-scrollbar-thumb {
+    background-color: #88888879;
+    border-radius: 5px;
+  }
+  
+  .dash-nav::-webkit-scrollbar-thumb:hover {
+    background-color: #55555580;
+  }
+  
+  .dash-nav::-webkit-scrollbar-track {
+    background-color: #fafafa00;
+  }
+
+  .dash-nav-item.name {
+    border-radius: 5px;
+    display: block;
+    height: 7vh;
+    margin-bottom: -0px;
+    padding-left: 0px;
+    color: #1e1e1e;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  .dash-nav-item.name.active {
+    height: 7vh;
+    
+    background-color: #d8dadb77; 
+  }
+  .dash-nav-item.name:hover {
+    background-color: #d8dadb77;
+    height: 7vh;
+  }
+  .dash-nav-item {
+    border-radius: 5px;
+    display: block;
+    padding: 10px;
+    margin-bottom: 5px;
+    padding-left: 25px;
+    color: #6D6C6C;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  .dash-nav-item.active {
+    background-color: #d8dadb; 
+  }
+  .dash-nav-item:hover {
+    background-color: #d8dadb;
+  }
+  
+  .dash-content {
+    border-radius: 0px 0 0 0px;
+    flex: 1;
+    padding: 0px;
+    background-color: #F1F3F4;
+    overflow: hidden;
+    overflow-y: auto;     
+  }
+
+  .profile-buttons {
+    display: flex;
+    justify-content: center;
+   
+  }
+  button {
+    padding: 10px 20px;
+    background-color:red;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+   
+  }
+  
+  button:hover {
+    background-color: #0e0f10;
+  }
+  
+  
+  /* Add this to your existing CSS file */
+.popup-form {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+}
+
+.popup-form-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.popup-form-content .profile-field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.popup-form-content label {
+  font-weight: bold;
+}
+
+.popup-form-content input {
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.popup-form-content button {
+  padding: 10px 20px;
+  background-color: red;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.popup-form-content button:hover {
+  background-color: #0e0f10;
+}

@@ -15,33 +15,23 @@ app.use("/owner", OwnerRouter);
 const ManagerRouter = require('./routes/Managers');
 app.use("/manager", ManagerRouter);
 
-const ServiceRouter = require('./routes/Services');
-app.use("/service", ServiceRouter);
-
-const JobRouter = require('./routes/Jobs');
-app.use("/job", JobRouter);
-
 const CustomerRouter = require('./routes/Customers');
 app.use("/customer", CustomerRouter);
-    
+
 const CarRouter = require('./routes/Cars');
 app.use("/car", CarRouter);
 
 const AppointmentRouter = require('./routes/Appointments');
 app.use("/appointment", AppointmentRouter);
 
-const ProcessRouter = require('./routes/Processes');
-app.use("/process", ProcessRouter);
+const AppointmentServiceRouter = require('./routes/AppointmentService');
+app.use("/appointmentservice", AppointmentServiceRouter);
+    
+const ServiceRouter = require('./routes/Services');
+app.use("/service", ServiceRouter);
 
-
-const CartabRouter = require('./routes/CarTabs');
-app.use("/cartab", CartabRouter);
-
-
-const AppoitCardRouter = require('./routes/AppointmentCards');
-app.use("/appointmentcard", AppoitCardRouter);
-
-
+const JobRouter = require('./routes/Jobs');
+app.use("/job", JobRouter);
 
 db.sequelize.sync().then(() => {
     app.listen(3001, () => {

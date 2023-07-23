@@ -1,23 +1,25 @@
 const express = require('express');
 const router = express.Router();
-const { Manager } = require('../models');
+const { Manager, User } = require('../models');
 
-router.get('/', async (req, res) => {
+router.get("/", async (req, res) => {
   try {
-    const listOfManagers = await Manager.findAll();
+    const listOfManagers = await Manager.findAll({ include: User, as: 'user' });
     res.json(listOfManagers);
   } catch (error) {
-    res.status(500).json({ error: 'An error occurred while fetching the list of managers.' });
+    console.error("Error fetching managers:", error);
+    res.status(500).json({ error: "Internal server error" });
   }
 });
 
 router.post('/', async (req, res) => {
   try {
     const managerData = req.body;
-    const createdManager = await Manager.create(managerData);
-    res.json(createdManager);
+    const newManager = await Manager.create(managerData);
+    res.json(newManager);
   } catch (error) {
-    res.status(500).json({ error: 'An error occurred while creating the manager.' });
+    console.error("Error creating manager:", error);
+    res.status(500).json({ error: "Internal server error" });
   }
 });
 
