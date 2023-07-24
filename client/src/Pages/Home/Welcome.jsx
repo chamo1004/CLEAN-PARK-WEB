@@ -32,7 +32,11 @@ const Welcome = ({ ourServicesRef }) => {
                 Effortless Appointments, Seamless Service Updates
               </Typography>
             </Grid>
-            <Grid item xs={12}>
+            <Grid
+              item
+              xs={12}
+              sx={{ display: "flex", justifyContent: "center" }}
+            >
               <Button
                 variant="contained"
                 component={RouterLink}
@@ -42,6 +46,7 @@ const Welcome = ({ ourServicesRef }) => {
                   color: "#fff",
                   "&:hover": {
                     backgroundColor: "#888",
+                    alignItems: "center",
                   },
                 }}
               >

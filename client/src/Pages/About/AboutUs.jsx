@@ -94,7 +94,10 @@ const AboutUs = ({ aboutUsRef }) => {
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11006.892782113175!2d81.33444663000726!3d6.922356807227263!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae4519069dc4eb3%3A0xe5ac9d75a72d3627!2sObbegoda%20Junction!5e0!3m2!1sen!2slk!4v1689587933852!5m2!1sen!2slk"
                 width={1000}
                 height={400}
-                style={{ border: 0 }}
+                style={{
+                  border: "0px solid",
+                  borderRadius: "5px",
+                }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"

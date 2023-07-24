@@ -29,13 +29,13 @@ const serviceData = [
   {
     title: "Paintworks",
     description:
-      "Our experts can handle engine repairs, gearbox repairs, oil changes, and battery replacements.",
+      "We offer top-notch automotive painting and refinishing services to give your vehicle a fresh and flawless appearance.",
     backgroundImg: paintworks,
   },
   {
     title: "Interior Clean-Up",
     description:
-      "Our experts can handle engine repairs, gearbox repairs, oil changes, and battery replacements.",
+      "We ensure meticulous interior cleaning for a pristine driving experience.",
     backgroundImg: cleanup,
   },
 ];

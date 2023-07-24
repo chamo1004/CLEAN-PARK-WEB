@@ -182,7 +182,7 @@ const SignupForm = () => {
               </Typography>
               <Typography
                 variant="body1"
-                color="#C0C0C0"
+                color="#3A3B3C"
                 sx={{ mb: 2 }}
                 textAlign="center"
               >
@@ -292,7 +292,7 @@ const SignupForm = () => {
                   <Grid item>
                     <Typography
                       variant="body1"
-                      color="#C0C0C0"
+                      color="#3A3B3C"
                       fontWeight="regular"
                     >
                       Already have an account?{" "}

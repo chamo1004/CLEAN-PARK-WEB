@@ -86,7 +86,7 @@ const LoginForm = () => {
                 <Typography
                   component="h1"
                   variant="body1"
-                  color="#C0C0C0"
+                  color="#3A3B3C"
                   textAlign="center" // Center horizontally
                 >
                   Please enter your details.
@@ -141,7 +141,7 @@ const LoginForm = () => {
                   <Grid item>
                     <Typography
                       variant="body1"
-                      color="#C0C0C0"
+                      color="#3A3B3C"
                       fontWeight="regular"
                     >
                       Don&apos;t have an account?{" "}
