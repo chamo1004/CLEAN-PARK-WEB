@@ -33,6 +33,11 @@ app.use("/service", ServiceRouter);
 const JobRouter = require('./routes/Jobs');
 app.use("/job", JobRouter);
 
+
+const JobCardRouter = require('./routes/JobCards');
+app.use("/jobcards", JobCardRouter);
+
+
 db.sequelize.sync().then(() => {
     app.listen(3001, () => {
         console.log('Server running on port 3001');

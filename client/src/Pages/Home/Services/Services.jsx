@@ -7,52 +7,44 @@ import repair from "../../../img/repair~1.jpg";
 import paintworks from "../../../img/paintworks.jpg";
 import cleanup from "../../../img/cleanup.jpg";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const serviceData = [
   {
-    title: "Body Wash",
-    description: "Choose from full service or normal service options.",
     backgroundImg: bodywash,
   },
   {
-    title: "Check-Up",
-    description:
-      "We offer comprehensive check-ups for your engine, gearbox, and battery.",
     backgroundImg: checkup,
   },
   {
-    title: "Repairing",
-    description:
-      "Our experts can handle engine repairs, gearbox repairs, oil changes, and battery replacements.",
     backgroundImg: repair,
   },
   {
-    title: "Paintworks",
-    description:
-      "We offer top-notch automotive painting and refinishing services to give your vehicle a fresh and flawless appearance.",
     backgroundImg: paintworks,
   },
   {
-    title: "Interior Clean-Up",
-    description:
-      "We ensure meticulous interior cleaning for a pristine driving experience.",
     backgroundImg: cleanup,
   },
 ];
 
 const Services = ({ ourServicesRef, offersRef }) => {
+  let navigate = useNavigate();
   const [listOfSerTab, setListOfSerTab] = useState([]);
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/serTab")
+      .get("http://localhost:3001/service") // Fetch data from the backend
       .then((response) => {
         setListOfSerTab(response.data);
       })
       .catch((error) => {
-        console.log("Error fetching serTab data:", error);
+        console.log("Error fetching service data:", error);
       });
   }, []);
+
+  const handleBoxClick = (serviceId) => {
+    navigate(`/servicecardcontent/${serviceId}`);
+  };
 
   const handleOffersClick = () => {
     offersRef.current.scrollIntoView({ behavior: "smooth" });
@@ -69,7 +61,9 @@ const Services = ({ ourServicesRef, offersRef }) => {
           alignItems: "center",
           color: "white",
           paddingLeft: "3.5rem",
+          cursor: "pointer", // Add cursor style to indicate clickability
         }}
+        // Move onClick function to the Box component
       >
         <Grid container spacing={0} p={0}>
           <Grid
@@ -93,22 +87,19 @@ const Services = ({ ourServicesRef, offersRef }) => {
               Discover the Difference
             </Typography>
           </Grid>
-          {serviceData.map((service, index) => (
+
+          {listOfSerTab.map((servicetab, index) => (
             <Grid item xs={12} sm={4} key={index} sx={{ textAlign: "center" }}>
-              <ServiceCard
-                title={service.title}
-                description={service.description}
-                backgroundImg={service.backgroundImg}
-              />
-            </Grid>
-          ))}
-          {listOfSerTab.map((course, index) => (
-            <Grid item xs={12} sm={4} key={index} sx={{ textAlign: "center" }}>
-              <ServiceCard
-                title={course.title}
-                description={course.description}
-                backgroundImg={course.backgroundImg}
-              />
+              <Box
+                onClick={() => handleBoxClick(servicetab.serviceid)} // Pass the correct Id to the handleBoxClick function
+                sx={{ cursor: "pointer" }}
+              >
+                <ServiceCard
+                  servicetype={servicetab.servicetype}
+                  description={servicetab.description}
+                  backgroundImg={serviceData[index].backgroundImg} // Use the hard-coded image based on the index
+                />
+              </Box>
             </Grid>
           ))}
           <Grid

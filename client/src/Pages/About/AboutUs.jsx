@@ -215,8 +215,8 @@ const AboutUs = ({ aboutUsRef }) => {
                 }}
               >
                 We understand the importance of convenience in today's
-                fast-paced world. We strive to make the automotive maintenance
-                for our customers' convenient. From online booking options to
+                fast-paced world. We strive to make automotive maintenance for
+                our customers convenient. From online booking options to
                 efficient service delivery, we prioritize convenience at every
                 step.
               </Typography>

@@ -1,24 +1,24 @@
 const express = require('express');
 const router = express.Router();
-const { Job, Service } = require('../models');
+const { Income, DailyIncome } = require('../models');
 
 router.get("/", async (req, res) => {
   try {
-    const listOfJobs = await Job.findAll({ include: Service });
-    res.json(listOfJobs);
+    const listOfIncomes = await Income.findAll({ include: Service });
+    res.json(listOfIncomes);
   } catch (error) {
-    console.error("Error fetching jobs:", error);
+    console.error("Error fetching Incomes:", error);
     res.status(500).json({ error: "Internal server error" });
   }
 });
 
 router.post('/', async (req, res) => {
   try {
-    const jobData = req.body;
-    const newJob = await Job.create(jobData);
-    res.json(newJob);
+    const IncomeData = req.body;
+    const newIncome = await Income.create(IncomeData);
+    res.json(newIncome);
   } catch (error) {
-    console.error("Error creating job:", error);
+    console.error("Error creating Income:", error);
     res.status(500).json({ error: "Internal server error" });
   }
 });

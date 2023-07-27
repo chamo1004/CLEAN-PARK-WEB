@@ -55,15 +55,15 @@ export default function Profile02() {
                 onClick={() => handleTabClick("yourinfo")}
               >
                 <div className="dash-name">
-                  <h1 style={{ marginTop: "-0.5vh" }}>Dulan Chathuranga</h1>
-                  <h2>dulan.chr@gmail.com</h2>
+                  <h1 style={{ marginTop: "-0.5vh" }}>Manager</h1>
+                  <h2>manager@gmail.com</h2>
                 </div>
               </a>
             </li>
             {/* Add other menu items on the left side here */}
             <li>
               <a
-                href="#"
+                href="appointments"
                 className={`dash-nav-item ${
                   activeTab === "appointment" ? "active" : ""
                 }`}

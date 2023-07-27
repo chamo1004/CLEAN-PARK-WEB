@@ -50,6 +50,8 @@
 .payment-list ul {
   list-style: none;
   padding: 0;
+  text-align: left;
+  margin-left: 400px;
 
 }
 

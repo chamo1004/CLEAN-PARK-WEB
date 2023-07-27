@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       },  
       price: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },      
     });
     Job.associate = (models) => {

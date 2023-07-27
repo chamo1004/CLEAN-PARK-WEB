@@ -9,6 +9,8 @@ import Verification from "../Pages/Verification/Verification";
 import Profile01 from "../Pages/Profile/Customer/Profile01";
 import Profile02 from "../Pages/Profile/Manager/Profile02";
 import Profile03 from "../Pages/Profile/Owner/Profile03";
+import ServiceCardContent from "../Pages/Home/Services/ServiceCardContent";
+import Post from "./Post";
 
 export default function () {
   return (
@@ -17,12 +19,26 @@ export default function () {
         <Routes>
           <Route exact path="/" element={<Home />}></Route>
           <Route exact path="/aboutus" element={<AboutUs />}></Route>
+
+          <Route
+            exact
+            path="/servicecardcontent/:id"
+            element={<ServiceCardContent />}
+          ></Route>
+
           <Route exact path="/booknow" element={<BookNow />}></Route>
           <Route exact path="/login" element={<LogIn />}></Route>
+          <Route exact path="/post/:id" element={<Post />}></Route>
           <Route exact path="/signup" element={<SignUp />}></Route>
           <Route exact path="/verification" element={<Verification />}></Route>
           <Route exact path="/profile01" element={<Profile01 />}></Route>
           <Route exact path="/profile02" element={<Profile02 />}></Route>
+          {/* <Route
+            exact
+            path="/appointments"
+            element={<AppointmentList />}
+          ></Route> */}
+
           <Route exact path="/profile03" element={<Profile03 />}></Route>
         </Routes>
       </Router>

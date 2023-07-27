@@ -1,7 +1,10 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
+import { useParams, useNavigate } from "react-router-dom";
+import axios from "axios";
 
-const ServiceCard = ({ title, description, backgroundImg }) => {
+const ServiceCard = ({ servicetype, description, backgroundImg }) => {
+  const { Id } = useParams();
   return (
     <>
       <Box
@@ -10,6 +13,7 @@ const ServiceCard = ({ title, description, backgroundImg }) => {
           backgroundSize: "cover",
           backgroundPosition: "center",
           padding: 12,
+          marginBottom: 3,
           borderRadius: 2,
           height: "80%",
           width: "90%",
@@ -20,7 +24,7 @@ const ServiceCard = ({ title, description, backgroundImg }) => {
         }}
       >
         <Typography variant="h4" component="h2" sx={{ marginBottom: 1 }}>
-          {title}
+          {servicetype}
         </Typography>
         <Typography variant="body1" sx={{ marginBottom: 2 }}>
           {description}

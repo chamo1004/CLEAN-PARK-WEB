@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./cardetails.css";
+import NotificationsIcon from "@mui/icons-material/Notifications";
 
-export default function AppointmentsTab() {
+export default function CarDetails({ car, appointments, fetchAppointments }) {
   const [formData, setFormData] = useState({
     title: "",
     date: "",
@@ -13,13 +14,9 @@ export default function AppointmentsTab() {
 
   const [errors, setErrors] = useState({});
   const [serviceTypes, setServiceTypes] = useState([]);
-  const [appointments, setAppointments] = useState([]);
-  const [carData, setCarData] = useState(null); // New state variable for car details
 
   useEffect(() => {
     fetchServiceTypes();
-    fetchAppointments();
-    fetchVehicleDetails();
   }, []);
 
   const fetchServiceTypes = async () => {
@@ -28,28 +25,6 @@ export default function AppointmentsTab() {
       setServiceTypes(response.data);
     } catch (error) {
       console.error("Error fetching service types:", error);
-    }
-  };
-
-  const fetchAppointments = async () => {
-    try {
-      const response = await axios.get("http://localhost:3001/appointment", {
-        params: { include: "services" },
-      });
-      setAppointments(response.data);
-    } catch (error) {
-      console.error("Error fetching appointments:", error);
-    }
-  };
-
-  const fetchVehicleDetails = async () => {
-    try {
-      const response = await axios.get("http://localhost:3001/car");
-      if (response.data && response.data.length > 0) {
-        setCarData(response.data);
-      }
-    } catch (error) {
-      console.error("Error fetching car data:", error);
     }
   };
 
@@ -70,7 +45,7 @@ export default function AppointmentsTab() {
 
     // Validate title (not only numbers)
     if ((formData.title && !formData.title) || /^\d+$/.test(formData.title)) {
-      errors.title = "Can't enter only numbers";
+      errors.title = "Title can't only contain numbers";
     }
 
     // Validate date
@@ -130,6 +105,8 @@ export default function AppointmentsTab() {
         serviceType: "",
       });
       setErrors({});
+      // Fetch updated appointments after submission
+      fetchAppointments();
     } catch (error) {
       console.error("Error submitting data:", error);
     }
@@ -137,17 +114,19 @@ export default function AppointmentsTab() {
 
   return (
     <div className="carcontorls">
-      {carData &&
-        carData.map((car) => (
-          <div key={car.id} className="card2">
-            <div className="card2-title">
-              <h1>{car.model}</h1>
-            </div>
-            <div className="card2-subtitle">
-              <h2>{car.number}</h2>
-            </div>
+      {car && (
+        <div className="card2">
+          <div className="card2-title">
+            <h1>{car.model}</h1>
           </div>
-        ))}
+          <div className="card2-subtitle">
+            <h2>{car.number}</h2>
+          </div>
+          <div className="bell-icon">
+            <NotificationsIcon fontSize="large" color="action" />
+          </div>
+        </div>
+      )}
       <div className="appointmentss">
         <h2
           style={{
@@ -263,19 +242,21 @@ export default function AppointmentsTab() {
               <div key={appointment.id} className="appintmenttab">
                 <div className="appoint-date">{appointment.date}</div>
                 <div className="appoint-time">
-                  <>@</>
+                  <>at </>
                   {appointment.time}
-                  <div className="appoint-service">
-                    {/* Display the service type */}
-                    {appointment.services && appointment.services.length > 0
-                      ? appointment.services
-                          .map((service) => service.servicetype)
-                          .join(", ")
-                      : "Service data not available"}
-                  </div>
+                </div>
+                <div className="appoint-service">
+                  {/* Display the service type */}
+                  {appointment.services && appointment.services.length > 0 ? (
+                    appointment.services.map((service) => (
+                      <div key={service.id}>{service.servicetype}</div>
+                    ))
+                  ) : (
+                    <div>Service data not available</div>
+                  )}
                 </div>
                 {/* Display confirmation status */}
-                {appointment.confirmation ? (
+                {appointment.status ? (
                   <div
                     style={{
                       fontSize: "14px",

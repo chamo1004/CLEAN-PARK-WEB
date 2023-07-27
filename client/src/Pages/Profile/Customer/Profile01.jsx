@@ -79,7 +79,6 @@ export default function Profile01() {
       const newCar = {
         model: vehicleModel,
         number: vehicleNumber,
-        color: vehicleColor, // Assuming you also want to save the color in the database
       };
 
       // Send the data to the server
@@ -122,19 +121,19 @@ export default function Profile01() {
     switch (activeTab) {
       case "yourinfo":
         return <YourInfo />;
-      case "cardetails":
+      default:
+        const selectedCar = carData.find((car) => car.number === activeTab);
         return (
           <CarDetails
+            car={selectedCar}
             appointments={appointments}
-            fetchAppointments={fetchAppointments} // Pass this function to update the appointment list
+            fetchAppointments={fetchAppointments}
           />
         );
       case "services":
         return <Services />;
       case "appointments":
         return <MakeAppointments />;
-      default:
-        return null;
     }
   };
 

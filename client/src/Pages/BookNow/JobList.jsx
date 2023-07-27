@@ -43,7 +43,7 @@ const JobList = () => {
         {jobs.map((job) => (
           <div key={job.id} className="job-item">
             <h2>{job.title}</h2>
-            <p>Price: ${job.price}</p>
+            <p>Price: Rs. {job.price}</p>
           </div>
         ))}
       </div>

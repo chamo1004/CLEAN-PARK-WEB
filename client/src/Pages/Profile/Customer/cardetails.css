@@ -186,7 +186,7 @@
     
   }
   .card2 {
-    padding: 100px; /* Reduce padding for a better display */
+    padding: 60px; 
     background-color: #070d19;
     width: 100%;
     height: 20vh;
@@ -195,7 +195,30 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    
+   
+  }
+
+  .bell-icon {
+    /* Add styles for the bell icon container */
+    position: absolute;
+    top: 15px; /* Adjust the top position as desired */
+    right: 15px; /* Adjust the right position as desired */
+    cursor: pointer;
+    color: #efefef;
+    background-color: white;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: right;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-right: 15px;
+  }
+  
+  .bell-icon:hover {
+    /* Add hover styles for the bell icon */
+    background-color: #8c9097;
   }
   .appointmentlist {
 

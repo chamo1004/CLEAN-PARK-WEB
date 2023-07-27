@@ -51,8 +51,8 @@ export default function Profile02() {
                 onClick={() => handleTabClick("yourinfo")}
               >
                 <div className="dash-name">
-                  <h1 style={{ marginTop: "-0.5vh" }}>Dulan Chathuranga</h1>
-                  <h2>dulan.chr@gmail.com</h2>
+                  <h1 style={{ marginTop: "-0.5vh" }}>Owner</h1>
+                  <h2>owner@gmail.com</h2>
                 </div>
               </a>
             </li>
