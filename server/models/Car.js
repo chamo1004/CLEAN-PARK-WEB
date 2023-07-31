@@ -25,6 +25,7 @@ module.exports = (sequelize, DataTypes) => {
     // Define the one-to-many association between Car and Service
     Car.hasMany(models.Appointment, {
       foreignKey: 'carid',
+      allowNull: false,
       
     });
   };

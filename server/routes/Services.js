@@ -25,25 +25,6 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.get('/byId/:id', async (req, res) => {
-  const id = req.params.id;
-  try {
-    const servicecontent = await Service.findByPk(id, {
-      include: [
-        {
-          model: Job,
-          attributes: ['title', 'price'],
-        },
-      ],
-    });
-    if (!servicecontent) {
-      return res.status(404).json({ error: 'Service content not found.' });
-    }
-    res.json(servicecontent);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Server Error' });
-  }
-});
+
 
 module.exports = router;

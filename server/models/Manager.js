@@ -14,9 +14,9 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    tel: {
+    email: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     address: {
       type: DataTypes.STRING,
@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
  Manager.associate = (models) => {
    Manager.belongsTo(models.User, {
       foreignKey: 'userid',
-      as: 'user',
+      allowNull: false,
     });
   };
 

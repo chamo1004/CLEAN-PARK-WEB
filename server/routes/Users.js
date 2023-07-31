@@ -23,4 +23,24 @@ router.post('/', async (req, res) => {
   }
 });
 
+router.post('/login', async (req, res) => {
+  try {
+    const { tel, password } = req.body;
+
+    // Find the user in the database based on the provided phone number
+    const user = await User.findOne({ where: { tel } });
+
+    if (!user || user.password !== password) {
+      // If the user is not found or password is incorrect, send an error response
+      res.status(401).json({ error: "Invalid credentials" });
+    } else {
+      // Send the authenticated user information as a response
+      res.json(user);
+    }
+  } catch (error) {
+    console.error("Error logging in:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
 module.exports = router;

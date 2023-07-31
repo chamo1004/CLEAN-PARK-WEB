@@ -1,33 +1,26 @@
-module.exports = (sequelize, DataTypes) => {
+// models/Income.js
 
-    const Income = sequelize.define("Income", {
-  
-      incomeid: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true, 
-      },
-      vehiclenumber: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      description: {
-        type: DataTypes.STRING,
-        allowNull: true,
-      },
-      payment: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },  
-          
-    });
-    Income.associate = (models) => {
-      Income.belongsTo(models.DailyIncome, {
-        foreignKey: 'dailyincomeid',
-       
-      });
-    };
-  
-    return Income;
-  };
+module.exports = (sequelize, DataTypes) => {
+  const Income = sequelize.define("Income", {
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+    },
+    date: {
+      type: DataTypes.DATEONLY,
+      allowNull: false,
+    },
+    vehiclenumber: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    payment: {
+      type: DataTypes.DECIMAL(10, 2),
+      allowNull: false,
+    },
+  });
+
+  return Income;
+};

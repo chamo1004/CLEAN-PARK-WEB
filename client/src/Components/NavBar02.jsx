@@ -37,7 +37,7 @@ function NavBar02(props) {
       <Typography variant="h6" sx={{ my: 2 }}>
         <img src={logoImage} alt="Logo" style={{ height: 80 }} />
       </Typography>
-      
+
       <List>
         {navItems.map((item) => (
           <ListItem key={item.label} disablePadding>
@@ -59,7 +59,7 @@ function NavBar02(props) {
             <ListItemText primary="Book now" />
           </ListItemButton>
         </ListItem>
-       
+
         <ListItem disablePadding>
           <ListItemButton
             component={Link}
@@ -116,19 +116,18 @@ function NavBar02(props) {
                   variant="contained"
                   sx={{ backgroundColor: "red", color: "#fff" }}
                 >
-                  Book now
+                  Make
                 </Button>
               </Stack>
             </Box>
             <Box sx={{ display: { xs: "none", md: "block" } }}>
-             
               <Button
                 component={Link}
                 to="/auth/sign-up"
                 variant="contained"
                 sx={{ backgroundColor: "red", color: "#fff" }}
               >
-               Log Out
+                Log Out
               </Button>
             </Box>
           </Toolbar>

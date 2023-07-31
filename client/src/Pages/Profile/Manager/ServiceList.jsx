@@ -44,15 +44,21 @@ const ServiceList = () => {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    if (!/^\d+(\.\d+)?$/.test(price) || parseFloat(price) <= 0) {
+
+    // Check if the price is a valid number or empty
+    const isPriceValid =
+      price === "" || (/^\d+(\.\d+)?$/.test(price) && parseFloat(price) > 0);
+
+    if (!isPriceValid) {
       setErrorMessage("Please enter a valid price.");
       return;
     }
+    console.log("Price before API call:", price);
 
     const jobData = {
       serviceid: selectedService.serviceid,
       title: title,
-      price: parseFloat(price),
+      price: price === "" ? null : parseFloat(price),
     };
 
     fetch("http://localhost:3001/job", {
@@ -203,6 +209,13 @@ const ServiceList = () => {
       });
   };
   const handleDeleteJob = (job) => {
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this job?"
+    );
+    if (!confirmDelete) {
+      return; // If the user clicks "Cancel," do nothing
+    }
+
     fetch(`http://localhost:3001/job/${job.jobid}`, {
       method: "DELETE",
     })
@@ -291,12 +304,16 @@ const ServiceList = () => {
                       <div className="job-card" key={job.jobid}>
                         <h4>{job.title}</h4>
                         <p>Rs. {job.price}</p>
-                        <div>
-                          <button onClick={() => handleEditJobClick(job)}>
-                            Edit
+
+                        <div className="job-card-buttons">
+                          <button
+                            onClick={() => handleEditJobClick(job)}
+                            className="green-button"
+                          >
+                            <i className="fi fi-rr-blog-pencil"></i>
                           </button>
                           <button onClick={() => handleDeleteJob(job)}>
-                            Delete
+                            <i className="fi fi-rs-trash"></i>
                           </button>
                         </div>
                       </div>

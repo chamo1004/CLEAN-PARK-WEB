@@ -1,10 +1,7 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
-import { useParams, useNavigate } from "react-router-dom";
-import axios from "axios";
 
 const ServiceCard = ({ servicetype, description, backgroundImg }) => {
-  const { Id } = useParams();
   return (
     <>
       <Box
@@ -13,9 +10,9 @@ const ServiceCard = ({ servicetype, description, backgroundImg }) => {
           backgroundSize: "cover",
           backgroundPosition: "center",
           padding: 12,
-          marginBottom: 3,
+          marginBottom: "60px",
           borderRadius: 2,
-          height: "80%",
+          height: "300px",
           width: "90%",
           transition: "transform 0.3s",
           "&:hover": {

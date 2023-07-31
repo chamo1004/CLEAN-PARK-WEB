@@ -1,51 +1,103 @@
-.job-list {
-  width: 90%;
-  margin: 80px;
-  padding: 40px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+.job-list1 {
+  width: 100%;
+  height: 100vh;
+  overflow-y: auto;
+  margin: 0 auto;
+  background-color: #000; /* Set the background color to black */
+  color: white; /* Set the text color to white */
+  padding: 20px;
+ }
+
+.service-card1 {
+  background-Color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
   border-radius: 5px;
-  background-color: rgba(0, 0, 0, 0.856);
-  color: aliceblue;
+  padding: 10px;
+  margin: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: calc(47% - 0px);
   overflow: hidden;
   overflow-y: auto;
+  height: 280px;
+  border: 1px solid rgba(255, 255, 255, 0.222);
+  backdrop-Filter: blur(20px);
+  border-Radius: .7rem;
+  transition: all ease .3s;
+  justify-Content: space-between;
+&:hover {
+  box-shadow: 0px 0px 20px 1px #ffbb763f;
+  border: 1px solid rgba(255, 255, 255, 0.454);
+}}
+
+
+
+
+
+
+.service-cards1 {
+  background-color: #33333300;
+  max-width: 99.5%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  display: flex;
+  height: auto;
+  
 }
 
-.job-container {
-  margin-top: 20px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Display three services in a row */
-  gap: 20px;
+.service-card1 h2{
+  color: #ffffff;
 }
 
-.job-item {
-  width: 450px; 
-  height: 150px; 
-  padding: 15px;
-  gap: 15px;
-  margin-left: 12px;
-  margin-bottom: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  background-color: black;
+.service-card1 h3{
+  color: #000;
+}
+
+.jobs1 {
+  margin-top: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.job-card1 {
+  background-color: #cccccc9e;
+  color: #000;
+  border-radius: 5px;
+  padding: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: calc(50% - 10px); 
+  overflow: hidden;
+  overflow-y: auto;
+  margin-left: 3px;
+}
+
+.job-card1:hover {
+  background-color: #ffffff; 
+  color: #000; 
+  transition: background-color 0.3s ease; 
+}
+
+.job-card1-content1 {
+  display: flex;
+  justify-content: space-between; 
+}
+
+
+
+.job-card1 h4 {
+  margin: 0;
   color: white;
-  transition: background-color 0.3s;
 }
 
-.job-item:hover {
-  background-color: black; 
-}
-
-.job-item h2 {
-  margin-bottom: 5px;
-}
-
-.job-item p {
+.job-card1 p {
   margin: 5px 0;
 }
-
-.job-button {
-  display: flex; 
-  justify-content: center;
-  margin-top: 10px;
+ 
+.button-container {
+  display: flex;
+  justify-content: center; 
+  margin-top: 20px; 
+}
+.notice {
+  text-align: center;
 }

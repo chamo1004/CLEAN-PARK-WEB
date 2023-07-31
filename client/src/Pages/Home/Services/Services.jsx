@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Button, Grid, Typography } from "@mui/material";
 import ServiceCard from "./ServiceCard";
 import bodywash from "../../../img/bodywash~1.jpg";
 import checkup from "../../../img/checkup~1.jpg";
@@ -8,14 +8,16 @@ import paintworks from "../../../img/paintworks.jpg";
 import cleanup from "../../../img/cleanup.jpg";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 
 const serviceData = [
   {
-    backgroundImg: bodywash,
-  },
-  {
     backgroundImg: checkup,
   },
+  {
+    backgroundImg: bodywash,
+  },
+
   {
     backgroundImg: repair,
   },
@@ -43,11 +45,9 @@ const Services = ({ ourServicesRef, offersRef }) => {
   }, []);
 
   const handleBoxClick = (serviceId) => {
-    navigate(`/servicecardcontent/${serviceId}`);
-  };
-
-  const handleOffersClick = () => {
-    offersRef.current.scrollIntoView({ behavior: "smooth" });
+    // Here, you can use the serviceId or any other information you need to pass to the "/booknow" page.
+    // For now, let's simply navigate to the "/booknow" page.
+    navigate("/booknow");
   };
 
   return (
@@ -63,7 +63,6 @@ const Services = ({ ourServicesRef, offersRef }) => {
           paddingLeft: "3.5rem",
           cursor: "pointer", // Add cursor style to indicate clickability
         }}
-        // Move onClick function to the Box component
       >
         <Grid container spacing={0} p={0}>
           <Grid
@@ -91,13 +90,13 @@ const Services = ({ ourServicesRef, offersRef }) => {
           {listOfSerTab.map((servicetab, index) => (
             <Grid item xs={12} sm={4} key={index} sx={{ textAlign: "center" }}>
               <Box
-                onClick={() => handleBoxClick(servicetab.serviceid)} // Pass the correct Id to the handleBoxClick function
+                onClick={() => handleBoxClick(servicetab.serviceid)}
                 sx={{ cursor: "pointer" }}
               >
                 <ServiceCard
                   servicetype={servicetab.servicetype}
                   description={servicetab.description}
-                  backgroundImg={serviceData[index].backgroundImg} // Use the hard-coded image based on the index
+                  backgroundImg={serviceData[index].backgroundImg}
                 />
               </Box>
             </Grid>

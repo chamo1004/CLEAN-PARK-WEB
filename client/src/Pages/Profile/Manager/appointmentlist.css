@@ -1,6 +1,6 @@
 .appointment-list {
     width: 100%;
-    height: 100%;
+    height: auto;
     margin: 0 auto;
     background-color: #cccccc9e;
     padding-top: 40px;

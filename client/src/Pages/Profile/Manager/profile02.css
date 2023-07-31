@@ -1,6 +1,6 @@
 .yourinfo {
  
-    height: 100vh;
+    height: auto;
     z-index: 10000; 
     position: fixed; 
     top: 0;

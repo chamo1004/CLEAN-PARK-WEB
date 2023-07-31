@@ -224,3 +224,7 @@
 .popup-form-content button:hover {
   background-color: #0e0f10;
 }
+
+.nameq{
+  display: flex;
+}

@@ -14,9 +14,9 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    tel: {
+    email: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     address: {
       type: DataTypes.STRING,
@@ -30,11 +30,11 @@ module.exports = (sequelize, DataTypes) => {
 
   Customer.associate = (models) => {
     Customer.belongsTo(models.User, {
-      foreignKey: 'userid',
-     
+      foreignKey: "userid",
     });
     Customer.hasMany(models.Car, {
       foreignKey: "customerid",
+      allowNull: false,
     });
   };
 

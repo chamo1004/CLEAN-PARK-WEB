@@ -37,7 +37,7 @@ module.exports = (sequelize, DataTypes) => {
   
     Appointment.belongsToMany(models.Service, {
       through: models.AppointmentService, // Use the join table model
-      foreignKey: 'appointmentid', // The foreign key in the join table related to the Appointment model
+      foreignKey: 'appointmentserviceid', // The foreign key in the join table related to the Appointment model
      
     });
 };

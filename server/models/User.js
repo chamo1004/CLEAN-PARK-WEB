@@ -6,17 +6,19 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement: true,
       primaryKey: true,
     },
-    email: {
+    tel: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
     },
     password: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-   
+    usertype: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   });
-
 
   return User;
 };

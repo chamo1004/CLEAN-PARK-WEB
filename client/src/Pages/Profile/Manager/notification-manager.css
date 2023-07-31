@@ -1,0 +1,31 @@
+.app {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+  }
+  
+  .car-list,
+  .selected-car {
+    width: 40%;
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+  
+  .car-list h2,
+  .selected-car h2 {
+    margin: 0;
+  }
+  
+  .car-list ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .car-list li {
+    cursor: pointer;
+  }
+  
+  .selected-car button {
+    margin-top: 10px;
+  }
+  

@@ -67,5 +67,20 @@
 }
 
 .total-income button {
-  background-color: green;
+  background-color: transparent;
+  border: 2px solid green;
+  border-radius: 5px;
+  color: green;
+  margin-bottom: 20px;
 }
+
+.total-income button:hover {
+  background-color: black;
+  color: green; 
+}
+
+
+a {
+  text-decoration: none;
+}
+

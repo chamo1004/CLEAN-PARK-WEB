@@ -1,10 +1,9 @@
 import { Box, Button, Grid, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom"; // Import Link from "react-router-dom"
 import axios from "axios";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import banner04 from "../../img/banner04.jpg";
-import { Link as RouterLink } from "react-router-dom";
 
 const theme = createTheme({
   palette: {
@@ -16,29 +15,37 @@ const theme = createTheme({
     },
   },
 });
-
 const LoginForm = () => {
-  const [rememberMe, setRememberMe] = useState(false);
-
-  const handleSetRememberMe = () => setRememberMe(!rememberMe);
+  const [loginError, setLoginError] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
-    event.preventDefault(); // Prevent the default form submission behavior
+    event.preventDefault();
+    const phoneNumber = event.target.phonenumber.value;
+    const password = event.target.password.value;
 
-    // Get the form data
-    const phoneNumber = event.target.elements.phonenumber.value;
-    const password = event.target.elements.password.value;
-
-    // Make a GET request to the backend endpoint with query parameters
     try {
-      const response = await axios.get("/api/login", {
-        params: { phoneNumber, password },
+      // Send a POST request to the backend to authenticate the user
+      const response = await axios.post("http://localhost:3001/user/login", {
+        tel: phoneNumber,
+        password: password,
       });
-      // Handle the response
-      console.log(response.data);
+
+      // Assuming the backend returns a user object with a usertype property
+      const user = response.data;
+
+      // Navigate to different routes based on the usertype
+      if (user.usertype === "customer") {
+        navigate(`/profile01/${user.userid}`);
+      } else if (user.usertype === "manager") {
+        navigate("/profile02");
+      } else if (user.usertype === "owner") {
+        navigate("/profile03");
+      } else {
+        navigate("/profile01");
+      }
     } catch (error) {
-      // Handle errors
-      console.error(error);
+      setLoginError("Invalid credentials. Please try again.");
     }
   };
 
@@ -95,6 +102,7 @@ const LoginForm = () => {
               <Box
                 component="form"
                 noValidate
+                id="login-form"
                 sx={{ mt: 1 }}
                 onSubmit={handleSubmit}
               >
@@ -119,11 +127,13 @@ const LoginForm = () => {
                   id="password"
                   autoComplete="current-password"
                 />
-                <Box display="flex" alignItems="center"></Box>
+                {loginError && (
+                  <Typography variant="body1" color="error">
+                    {loginError}
+                  </Typography>
+                )}
                 <Button
-                  component={RouterLink}
-                  to="/profile02"
-                  type="submit"
+                  type="submit" // Change type to submit
                   fullWidth
                   variant="contained"
                   sx={{ mt: 2, mb: 3 }}

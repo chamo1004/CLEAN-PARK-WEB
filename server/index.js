@@ -18,6 +18,10 @@ app.use("/manager", ManagerRouter);
 const CustomerRouter = require('./routes/Customers');
 app.use("/customer", CustomerRouter);
 
+
+const CusDataRouter = require('./routes/GetCusData');
+app.use("/getcusdata", CusDataRouter);
+
 const CarRouter = require('./routes/Cars');
 app.use("/car", CarRouter);
 
@@ -33,9 +37,15 @@ app.use("/service", ServiceRouter);
 const JobRouter = require('./routes/Jobs');
 app.use("/job", JobRouter);
 
-
 const JobCardRouter = require('./routes/JobCards');
 app.use("/jobcards", JobCardRouter);
+
+const IncomeRouter = require('./routes/Incomes');
+app.use("/income", IncomeRouter);
+
+// const LoginRouter = require('./routes/Login');
+// app.use("/login", LoginRouter);
+
 
 
 db.sequelize.sync().then(() => {

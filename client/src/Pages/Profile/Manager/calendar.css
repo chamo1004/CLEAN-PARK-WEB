@@ -1,0 +1,57 @@
+.App {
+    text-align: center;
+    background-color: rgba(47, 47, 47, 0.689);
+    color: aliceblue;
+    border-radius: 5px;
+  }
+  
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+    height: 80px;
+  }
+  
+  .App-header {
+    background-color: #222;
+    height: 150px;
+    padding: 20px;
+    color: white;
+  }
+  
+  .App-title {
+    font-size: 1.5em;
+  }
+  
+  .App-intro {
+    font-size: large;
+  }
+  
+  @keyframes App-logo-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .rbc-btn-group {
+    margin-right: 10px;
+  }
+  
+  .rbc-btn-group button {
+    background-color: #007bff; /* Change this to the color you want */
+  color: #fff; /* Change this to the text color you want */
+    border: none;
+   
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  /* Styles for the "Next" button */
+  .rbc-btn-group button + button {
+    
+    color: white; /* Change this to the text color you want */
+    background-color: transparent;
+    border: 2px solid white;
+   
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 14px;
+  }

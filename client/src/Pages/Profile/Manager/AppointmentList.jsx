@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
-import "./appointmentlist.css"; // Import the CSS file for styling
+import "./appointmentlist.css";
+import Calendar from "./Calendar";
 
 const AppointmentList = () => {
   const [appointments, setAppointments] = useState([]);
+  const [selectedDay, setSelectedDay] = useState(null);
 
   useEffect(() => {
     // Fetch data from the backend API
@@ -22,14 +24,23 @@ const AppointmentList = () => {
     console.log(`Ignored appointment with ID: ${appointmentId}`);
   };
 
-  // Sort appointments by date in ascending order
-  const sortedAppointments = [...appointments].sort(
-    (a, b) => new Date(a.date) - new Date(b.date)
+  // Filter appointments by the selected day
+  const filteredAppointments = selectedDay
+    ? appointments.filter((appointment) => appointment.date === selectedDay)
+    : appointments;
+
+  // Sort appointments by time in ascending order
+  const sortedAppointments = [...filteredAppointments].sort(
+    (a, b) => new Date(a.time) - new Date(b.time)
   );
 
   return (
     <div className="appointment-list">
       <h2>Appointment List</h2>
+      {/* Add the appointment calendar */}
+      <div className="App">
+        <Calendar />
+      </div>
       <div className="appointment-cards">
         {sortedAppointments.map((appointment) => (
           <div className="appointment-card" key={appointment.id}>

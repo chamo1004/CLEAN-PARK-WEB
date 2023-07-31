@@ -24,6 +24,7 @@ export default function About() {
               height: "25em",
               padding: "1rem",
               marginLeft: "45px",
+              marginTop: "20px",
               backgroundColor: "rgba(255, 255, 255, 0.074)",
               border: "1px solid rgba(255, 255, 255, 0.222)",
               backdropFilter: "blur(20px)",

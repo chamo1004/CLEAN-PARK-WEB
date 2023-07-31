@@ -77,7 +77,7 @@ function Footer() {
             Home
           </CustomLink>
           |
-          <CustomLink color="#fff" href="/services">
+          <CustomLink color="#fff" href="/booknow">
             Services
           </CustomLink>
           |

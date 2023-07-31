@@ -1,0 +1,83 @@
+/* styles.css */
+
+.month-calendar {
+  font-family: Arial, sans-serif;
+  margin: 20px auto;
+  max-width: 800px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.month-calendar h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+}
+
+.day-cell {
+  padding: 16px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  background-color: #f9f9f9;
+  position: relative;
+}
+
+.day-number {
+  font-size: 24px;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.events-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.events-list li {
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.day-cell.has-events {
+  background-color: #b6e6b6; /* Green color when day has events */
+}
+
+/* Add some hover and active styles */
+.day-cell:hover {
+  background-color: #f0f0f0;
+}
+
+.day-cell:active {
+  background-color: #e0e0e0;
+}
+
+/* Position the events list inside the cell */
+.day-cell {
+  position: relative;
+}
+
+.events-list {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 8px;
+  border-radius: 4px;
+  display: none;
+  z-index: 1;
+}
+
+.day-cell:hover .events-list {
+  display: block;
+}

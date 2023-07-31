@@ -127,14 +127,15 @@ function NavBar(props) {
                   to="/booknow"
                   variant="contained"
                   sx={{
-                    backgroundColor: "red",
+                    backgroundColor: "transparent",
+                    border: "1px solid red",
                     color: "#fff",
                     "&:hover": {
                       backgroundColor: "#888",
                     },
                   }}
                 >
-                  Book now
+                  Make an appointment
                 </Button>
               </Stack>
             </Box>
@@ -144,7 +145,7 @@ function NavBar(props) {
               </Button>
               <Button
                 component={Link}
-                to="/signup"
+                to="/signup2"
                 variant="contained"
                 sx={{
                   backgroundColor: "red",

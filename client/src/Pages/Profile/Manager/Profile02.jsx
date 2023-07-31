@@ -28,6 +28,8 @@ export default function Profile02() {
 
       case "income":
         return <ServiceCharge />;
+      case "notification-manager":
+        return <Notification-manager />;
       default:
         return null;
     }
@@ -63,7 +65,7 @@ export default function Profile02() {
             {/* Add other menu items on the left side here */}
             <li>
               <a
-                href="appointments"
+                href="#"
                 className={`dash-nav-item ${
                   activeTab === "appointment" ? "active" : ""
                 }`}
@@ -94,6 +96,17 @@ export default function Profile02() {
                 onClick={() => handleTabClick("income")}
               >
                 Income
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                className={`dash-nav-item ${
+                  activeTab === "notification-manager" ? "active" : ""
+                }`}
+                onClick={() => handleTabClick("notification-manager")}
+              >
+                Notification
               </a>
             </li>
           </ul>
