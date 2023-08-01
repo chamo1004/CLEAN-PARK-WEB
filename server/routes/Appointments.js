@@ -4,27 +4,55 @@ const { Appointment, Car, Service, AppointmentService } = require('../models');
 
 // Create a new appointment
 router.post('/', async (req, res) => {
+  console.log("COMING TO THE APPOINMENT POST :::")
   try {
     const {
       title,
       date,
       time,
       confirmation,
-      status = false // Use the defaultValue from the Appointment model if not provided in the request body
-    } = req.body;
+      status = "pending",
+      servicetype,
+      carid,
+          } = req.body;
 
     // Create the appointment in the database
+    console.log('req.body: ', req.body)
     const newAppointment = await Appointment.create({
       title,
       date,
       time,
       confirmation,
-      status
+      status,
+      servicetype,
+      carid
     });
-
+    console.log("coming here!!!:")
     res.status(201).json(newAppointment);
   } catch (error) {
+    console.log("COMING TO THE ERROR CATCH: ", error)
     console.error('Error creating appointment:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+router.put('/:appointmentid', async (req, res) => {
+  try {
+    const appointmentId = req.params.appointmentid;
+    const { status } = req.body;
+
+    const appointment = await Appointment.findByPk(appointmentId);
+
+    if (!appointment) {
+      return res.status(404).json({ error: 'Appointment not found' });
+    }
+
+    appointment.status = status;
+    await appointment.save();
+
+    res.json(appointment);
+  } catch (error) {
+    console.error('Error updating appointment:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 });
@@ -87,7 +115,7 @@ router.put('/:appointmentid', async (req, res) => {
       date,
       time,
       confirmation,
-      status
+      status 
     } = req.body;
 
     // Find the appointment by ID

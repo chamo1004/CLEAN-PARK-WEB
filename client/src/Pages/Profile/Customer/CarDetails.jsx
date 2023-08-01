@@ -9,7 +9,7 @@ export default function CarDetails({ car, appointments, fetchAppointments }) {
     date: "",
     time: "",
     confirmation: false,
-    serviceType: "",
+    servicetype: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -64,8 +64,8 @@ export default function CarDetails({ car, appointments, fetchAppointments }) {
     }
 
     // Validate serviceType (dropdown)
-    if (!formData.serviceType) {
-      errors.serviceType = "Service Type is required";
+    if (!formData.servicetype) {
+      errors.servicetype = "Service Type is required";
     }
 
     // If there are validation errors, set the errors state
@@ -79,9 +79,10 @@ export default function CarDetails({ car, appointments, fetchAppointments }) {
       date: formData.date,
       time: formData.time,
       confirmation: formData.confirmation,
-      serviceType: formData.serviceType,
+      servicetype: formData.servicetype,
+      carid: car.carid,
     };
-
+    console.log("appointmentdata ", appointmentData);
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -102,7 +103,7 @@ export default function CarDetails({ car, appointments, fetchAppointments }) {
         date: "",
         time: "",
         confirmation: false,
-        serviceType: "",
+        servicetype: "",
       });
       setErrors({});
       // Fetch updated appointments after submission
@@ -110,6 +111,15 @@ export default function CarDetails({ car, appointments, fetchAppointments }) {
     } catch (error) {
       console.error("Error submitting data:", error);
     }
+  };
+
+  // Function to sort appointments in ascending order by date and time
+  const sortAppointmentsByDateTime = (appointments) => {
+    return appointments.slice().sort((a, b) => {
+      const dateA = new Date(a.date + " " + a.time);
+      const dateB = new Date(b.date + " " + b.time);
+      return dateA - dateB;
+    });
   };
 
   return (
@@ -180,22 +190,22 @@ export default function CarDetails({ car, appointments, fetchAppointments }) {
               <label htmlFor="serviceType">Service:</label>
               <select
                 name="serviceType"
-                value={formData.serviceType}
+                value={formData.servicetype}
                 onChange={handleChange}
                 required
               >
                 <option value="">Select Service Type</option>
-                {serviceTypes.map((serviceType) => (
+                {serviceTypes.map((servicetype) => (
                   <option
-                    key={serviceType.serviceid}
-                    value={serviceType.serviceid}
+                    key={servicetype.serviceid}
+                    value={servicetype.serviceid}
                   >
-                    {serviceType.servicetype}
+                    {servicetype.servicetype}
                   </option>
                 ))}
               </select>
-              {errors.serviceType && (
-                <p className="error">{errors.serviceType}</p>
+              {errors.servicetype && (
+                <p className="error">{errors.servicetype}</p>
               )}
             </div>
 
@@ -238,7 +248,7 @@ export default function CarDetails({ car, appointments, fetchAppointments }) {
           {appointments.length === 0 ? (
             <p>No appointments found.</p>
           ) : (
-            appointments.map((appointment) => (
+            sortAppointmentsByDateTime(appointments).map((appointment) => (
               <div key={appointment.id} className="appintmenttab">
                 <div className="appoint-date">{appointment.date}</div>
                 <div className="appoint-time">
@@ -249,7 +259,7 @@ export default function CarDetails({ car, appointments, fetchAppointments }) {
                   {/* Display the service type */}
                   {appointment.services && appointment.services.length > 0 ? (
                     appointment.services.map((service) => (
-                      <div key={service.id}>{service.servicetype}</div>
+                      <div key={service.id}>{appointment.servicetype}</div>
                     ))
                   ) : (
                     <div>Service data not available</div>

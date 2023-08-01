@@ -16,11 +16,9 @@ module.exports = (sequelize, DataTypes, models) => {
     },
   });
 
- 
-  
   Service.belongsToMany(models.Appointment, {
     through: models.AppointmentService, 
-    foreignKey: 'serviceid', 
+    foreignKey: 'appointmentserviceid', 
    
   });
    

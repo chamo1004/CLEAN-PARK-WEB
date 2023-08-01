@@ -19,14 +19,17 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     confirmation: {
-      type: DataTypes.BOOLEAN,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     status: {
-      type: DataTypes.BOOLEAN,
+      type: DataTypes.STRING,
       allowNull: false,
-      defaultValue: false, // Add this line to set the default value to false
-    },
+      },
+    servicetype:{
+        type: DataTypes.STRING,
+        allowNull: false, 
+      }
   });
 
   Appointment.associate = (models) => {
@@ -37,7 +40,7 @@ module.exports = (sequelize, DataTypes) => {
   
     Appointment.belongsToMany(models.Service, {
       through: models.AppointmentService, // Use the join table model
-      foreignKey: 'appointmentserviceid', // The foreign key in the join table related to the Appointment model
+      foreignKey: 'serviceid', // The foreign key in the join table related to the Appointment model
      
     });
 };

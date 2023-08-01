@@ -18,7 +18,6 @@ app.use("/manager", ManagerRouter);
 const CustomerRouter = require('./routes/Customers');
 app.use("/customer", CustomerRouter);
 
-
 const CusDataRouter = require('./routes/GetCusData');
 app.use("/getcusdata", CusDataRouter);
 

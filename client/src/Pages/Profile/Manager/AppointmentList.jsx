@@ -1,70 +1,76 @@
-import React, { useEffect, useState } from "react";
-import "./appointmentlist.css";
-import Calendar from "./Calendar";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
-const AppointmentList = () => {
+const AppointmentsTable = () => {
   const [appointments, setAppointments] = useState([]);
-  const [selectedDay, setSelectedDay] = useState(null);
 
   useEffect(() => {
-    // Fetch data from the backend API
-    fetch("http://localhost:3001/appointment")
-      .then((response) => response.json())
-      .then((data) => setAppointments(data))
-      .catch((error) => console.error("Error fetching data:", error));
+    fetchAppointments();
   }, []);
 
-  const handleConfirm = (appointmentId) => {
-    // Handle confirm logic here, e.g., update appointment status in the backend
-    console.log(`Confirmed appointment with ID: ${appointmentId}`);
+  const fetchAppointments = async () => {
+    try {
+      const response = await axios.get("http://localhost:3001/appointment");
+      const sortedAppointments = response.data.sort((a, b) => {
+        const dateA = new Date(a.date + " " + a.time);
+        const dateB = new Date(b.date + " " + b.time);
+        return dateA - dateB;
+      });
+      setAppointments(sortedAppointments);
+    } catch (error) {
+      console.error("Error fetching appointments:", error);
+    }
+  };
+
+  const handleConfirm = (appointmentid) => {
+    // Implement your confirm appointment logic here
+    console.log(`Confirm appointment with ID ${appointmentid}`);
   };
 
   const handleIgnore = (appointmentId) => {
-    // Handle ignore logic here, e.g., remove appointment from the list or mark as ignored
-    console.log(`Ignored appointment with ID: ${appointmentId}`);
+    // Implement your ignore appointment logic here
+    console.log(`Ignore appointment with ID ${appointmentid}`);
   };
 
-  // Filter appointments by the selected day
-  const filteredAppointments = selectedDay
-    ? appointments.filter((appointment) => appointment.date === selectedDay)
-    : appointments;
-
-  // Sort appointments by time in ascending order
-  const sortedAppointments = [...filteredAppointments].sort(
-    (a, b) => new Date(a.time) - new Date(b.time)
-  );
-
   return (
-    <div className="appointment-list">
-      <h2>Appointment List</h2>
-      {/* Add the appointment calendar */}
-      <div className="App">
-        <Calendar />
-      </div>
-      <div className="appointment-cards">
-        {sortedAppointments.map((appointment) => (
-          <div className="appointment-card" key={appointment.id}>
-            <h3>{appointment.title}</h3>
-            <p>Date: {appointment.date}</p>
-            <p>Time: {appointment.time}</p>
-            <p>Service Type: {appointment.servicetype}</p>
-            <p>Car Number: {appointment.carnumber}</p>
-            <div className="appointment-actions">
-              <button
-                className="confirm-button"
-                onClick={() => handleConfirm(appointment.id)}
-              >
-                Confirm
-              </button>
-              <button onClick={() => handleIgnore(appointment.id)}>
-                Ignore
-              </button>
-            </div>
-          </div>
-        ))}
-      </div>
+    <div className="table-container">
+      <h2>Appointments</h2>
+      <table className="appointments-table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Service Type</th>
+            <th>Car Number</th>
+            <th>Confirm</th>
+            <th>Ignore</th>
+          </tr>
+        </thead>
+        <tbody>
+          {appointments.map((appointment) => (
+            <tr key={appointment.appointmentid}>
+              <td>{appointment.date}</td>
+              <td>{appointment.time}</td>
+              <td>{appointment.servicetype}</td>
+              <td>{appointment.Car?.number}</td> {/* Use optional chaining */}
+              <td>
+                <button
+                  onClick={() => handleConfirm(appointment.appointmentid)}
+                >
+                  Confirm
+                </button>
+              </td>
+              <td>
+                <button onClick={() => handleIgnore(appointment.appointmentid)}>
+                  Ignore
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
 
-export default AppointmentList;
+export default AppointmentsTable;

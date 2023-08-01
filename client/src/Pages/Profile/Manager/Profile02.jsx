@@ -6,6 +6,8 @@ import YourInfo from "../YourInfo";
 import AppointmentList from "./AppointmentList";
 import ServiceList from "./ServiceList";
 import ServiceCharge from "./ServiceCharges";
+import Notificationmanager from "./Notification-manager";
+import Calendar from "./Calendar";
 
 export default function Profile02() {
   const [activeTab, setActiveTab] = useState("yourinfo");
@@ -29,7 +31,9 @@ export default function Profile02() {
       case "income":
         return <ServiceCharge />;
       case "notification-manager":
-        return <Notification-manager />;
+        return <Notificationmanager />;
+      case "calendar":
+        return <Calendar />;
       default:
         return null;
     }
@@ -105,6 +109,17 @@ export default function Profile02() {
                   activeTab === "notification-manager" ? "active" : ""
                 }`}
                 onClick={() => handleTabClick("notification-manager")}
+              >
+                Notification
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                className={`dash-nav-item ${
+                  activeTab === "calendar" ? "active" : ""
+                }`}
+                onClick={() => handleTabClick("calendar")}
               >
                 Notification
               </a>

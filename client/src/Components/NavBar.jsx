@@ -128,7 +128,7 @@ function NavBar(props) {
                   variant="contained"
                   sx={{
                     backgroundColor: "transparent",
-                    border: "1px solid red",
+                    border: "2px solid red",
                     color: "#fff",
                     "&:hover": {
                       backgroundColor: "#888",

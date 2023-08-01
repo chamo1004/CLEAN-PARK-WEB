@@ -1,61 +1,42 @@
-.appointment-list {
-    width: 100%;
-    height: auto;
-    margin: 0 auto;
-    background-color: #cccccc9e;
-    padding-top: 40px;
-  }
-  
-  h2 {
-    text-align: center;
-  }
-  
-  .appointment-cards {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 50px;
-    overflow: hidden;
-    overflow-y: auto;
-    padding: 90px;
-    padding-top: 20px;
-  }
-  
-  .appointment-card {
-    width: 300px;
-    border: 0px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-color: white;
-  }
-  
-  .appointment-card h3 {
-    margin: o;
-    color: #333;
-  }
-  
-  .appointment-card p {
-    margin: 5px 0;
-  }
-  
-  .appointment-actions {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-  }
-  
-  
+/* AppointmentsTable.css */
 
-  .confirm-button{
-    background-color: green;
-  }
-  
-  button:hover {
-    background-color: #1f2123;
-  }
-  
-  button:active {
-    background-color: #1f2123;
-  }
-  
+.table-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  max-width: 100%;
+  min-height: 100vh;
+  padding: 40px;
+  background-color: #cccccc9e;
+}
+
+.appointments-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.appointments-table th,
+.appointments-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.appointments-table th {
+  background-color: #f2f2f2;
+}
+
+.appointments-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.appointments-table tr:hover {
+  background-color: #e2e2e2;
+}
+
+.appointments-table button {
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+/* Add any additional styles as needed */

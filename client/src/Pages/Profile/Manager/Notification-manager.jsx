@@ -1,59 +1,108 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "./notification-manager.css";
 
-const BASE_API_URL = "YOUR_BACKEND_API_URL"; // Replace with your backend API URL
-
-const Notificationmanager = () => {
+const NotificationManager = () => {
   const [cars, setCars] = useState([]);
   const [selectedCar, setSelectedCar] = useState(null);
+  const [jobStatus, setJobStatus] = useState("jobStarted");
+  const [otherReason, setOtherReason] = useState("");
 
   useEffect(() => {
-    // Fetch car data from your backend API
-    fetch(BASE_API_URL + "/cars")
-      .then((response) => response.json())
-      .then((data) => setCars(data))
-      .catch((error) => console.error("Error fetching car data:", error));
+    // Fetch the car list from the API endpoint when the component mounts
+    axios
+      .get("http://localhost:3001/car")
+      .then((response) => {
+        setCars(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching car list:", error);
+      });
   }, []);
 
   const handleCarClick = (car) => {
     setSelectedCar(car);
+    setJobStatus("jobStarted");
+    setOtherReason("");
   };
 
-  const handleSendNotification = () => {
-    // Send notification for the selected car (You need to implement this function)
-    if (selectedCar) {
-      // Replace the following line with your notification sending logic
-      console.log(`Sending notification for car: ${selectedCar.name}`);
-    } else {
-      console.log("No car selected.");
+  const handleJobStatusChange = (event) => {
+    setJobStatus(event.target.value);
+  };
+
+  const handleOtherReasonChange = (event) => {
+    setOtherReason(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Do something with the selectedCar, jobStatus, and otherReason (if applicable)
+    console.log("Car:", selectedCar);
+    console.log("Job Status:", jobStatus);
+    if (jobStatus === "other") {
+      console.log("Other Reason:", otherReason);
     }
   };
 
+  const handleCancel = () => {
+    setSelectedCar(null);
+    setJobStatus("jobStarted");
+    setOtherReason("");
+  };
+
   return (
-    <div className="app">
-      <div className="car-list">
-        <h2>Car List</h2>
-        <ul>
-          {cars.map((car) => (
-            <li key={car.id} onClick={() => handleCarClick(car)}>
-              {car.name}
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div className="selected-car">
-        {selectedCar ? (
-          <>
-            <h2>Selected Car</h2>
-            <p>{selectedCar.name}</p>
-            <button onClick={handleSendNotification}>Send Notification</button>
-          </>
-        ) : (
-          <p>No car selected.</p>
-        )}
-      </div>
+    <div className="car-list">
+      <h1>Registered Vehicles</h1>
+      <ul>
+        {cars.map((car) => (
+          <li key={car.carid} onClick={() => handleCarClick(car)}>
+            {car.number}
+          </li>
+        ))}
+      </ul>
+
+      {selectedCar && (
+        <form onSubmit={handleSubmit} className="vehicle-form">
+          <h2>Vehicle Number: {selectedCar.number}</h2>
+          <div>
+            <label>Notification:</label>
+            <select value={jobStatus} onChange={handleJobStatusChange}>
+              <option value="jobStarted">Job has been started</option>
+              <option value="jobDone">Job done</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          {jobStatus === "other" && (
+            <div>
+              <label>Other Reason:</label>
+              <input
+                type="text"
+                value={otherReason}
+                onChange={handleOtherReasonChange}
+              />
+            </div>
+          )}
+
+          <div className="form-buttons">
+            <button type="submit">Submit</button>
+            <button
+              type="button"
+              style={{
+                border: "2px solid red",
+                backgroundColor: "transparent",
+                color: "red",
+                marginBottom: "20px",
+              }}
+              onClick={handleCancel}
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
+      )}
     </div>
   );
 };
 
-export default Notificationmanager;
+export default NotificationManager;

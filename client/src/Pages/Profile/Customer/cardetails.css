@@ -199,13 +199,13 @@
   }
 
   .bell-icon {
-    /* Add styles for the bell icon container */
+    
     position: absolute;
-    top: 15px; /* Adjust the top position as desired */
-    right: 15px; /* Adjust the right position as desired */
+    top: 15px; 
+    right: 15px; 
     cursor: pointer;
-    color: #efefef;
-    background-color: white;
+    color: black;
+    background-color: #8c9097;
     border-radius: 50%;
     width: 40px;
     height: 40px;
@@ -217,7 +217,7 @@
   }
   
   .bell-icon:hover {
-    /* Add hover styles for the bell icon */
+    
     background-color: #8c9097;
   }
   .appointmentlist {
@@ -237,7 +237,7 @@
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    width: 13.5vw;
+    width: 12.4vw;
     display: flex;
     flex-direction: column;
     align-items: center;
