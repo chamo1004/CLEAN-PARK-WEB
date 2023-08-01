@@ -9,7 +9,7 @@ export default function CarDetails({ car, appointments, fetchAppointments }) {
     date: "",
     time: "",
     confirmation: false,
-    servicetype: "",
+    serviceType: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -64,8 +64,8 @@ export default function CarDetails({ car, appointments, fetchAppointments }) {
     }
 
     // Validate serviceType (dropdown)
-    if (!formData.servicetype) {
-      errors.servicetype = "Service Type is required";
+    if (!formData.serviceType) {
+      errors.serviceType = "Service Type is required";
     }
 
     // If there are validation errors, set the errors state
@@ -79,8 +79,8 @@ export default function CarDetails({ car, appointments, fetchAppointments }) {
       date: formData.date,
       time: formData.time,
       confirmation: formData.confirmation,
-      servicetype: formData.servicetype,
-      carid: car.carid,
+      serviceType: formData.serviceType,
+      carid: car.i,
     };
     console.log("appointmentdata ", appointmentData);
     const requestOptions = {
@@ -103,7 +103,7 @@ export default function CarDetails({ car, appointments, fetchAppointments }) {
         date: "",
         time: "",
         confirmation: false,
-        servicetype: "",
+        serviceType: "",
       });
       setErrors({});
       // Fetch updated appointments after submission
@@ -190,22 +190,22 @@ export default function CarDetails({ car, appointments, fetchAppointments }) {
               <label htmlFor="serviceType">Service:</label>
               <select
                 name="serviceType"
-                value={formData.servicetype}
+                value={formData.serviceType}
                 onChange={handleChange}
                 required
               >
                 <option value="">Select Service Type</option>
-                {serviceTypes.map((servicetype) => (
+                {serviceTypes.map((serviceType) => (
                   <option
-                    key={servicetype.serviceid}
-                    value={servicetype.serviceid}
+                    key={serviceType.serviceid}
+                    value={serviceType.serviceid}
                   >
-                    {servicetype.servicetype}
+                    {serviceType.servicetype}
                   </option>
                 ))}
               </select>
-              {errors.servicetype && (
-                <p className="error">{errors.servicetype}</p>
+              {errors.serviceType && (
+                <p className="error">{errors.serviceType}</p>
               )}
             </div>
 
